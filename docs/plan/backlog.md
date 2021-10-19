@@ -39,13 +39,10 @@
 
 
 # 3. create epics
-- user
-- role
-- account
-- cart
-- checkout
-- contact
-- product
+- manage user
+- manage role
+- manage account
+- manage product
 - product category
 
 # 4. create backlog
