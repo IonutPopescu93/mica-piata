@@ -24,8 +24,10 @@ public class UserController {
     }
 
     @PostMapping(value = "/registration")
-    public String postRegistrationPage(@ModelAttribute(value = "userDto") UserDto userDto) {
+    public String postRegistrationPage(@ModelAttribute UserDto userDto) {
+        System.out.println("S-a apelat postRestrationPage!!!");
+        System.out.println(userDto);
         userService.addUser(userDto);
-        return "registration";
+        return "redirect:/registration";
     }
 }

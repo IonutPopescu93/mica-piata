@@ -4,13 +4,13 @@
 # 2. define entities
 
 ## user
-    user can have multiple roles (customer, saller) 
+    user can have multiple roles (customer, seller) 
     user can buy products from costumers
     user can be a customer
     customer can buy from customers (they can negotiate the price or to trade)
 
 ## role
-    customer, salller, admin
+    customer, seller, admin
 
 ## account
     balance
