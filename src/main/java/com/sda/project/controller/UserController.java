@@ -30,4 +30,11 @@ public class UserController {
         userService.addUser(userDto);
         return "redirect:/registration";
     }
+
+    @GetMapping(value = "/home")
+    public String getHomePage() {
+        return "home";
+    }
+
+
 }
