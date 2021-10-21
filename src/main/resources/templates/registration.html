@@ -8,127 +8,137 @@
     <nav class="navbar navbar-expand-lg navbar-light py-3">
         <div class="container">
             <!-- Navbar Brand -->
-            <a class="navbar-brand" href="#">
-                <img alt="logo" src="/static/images/logo.jpeg" th:src="@{images/logo.jpeg}" width="150">
+            <a class="navbar-brand" href="/home">
+                <img alt="logo" src="/static/images/logo.jpeg" th:src="@{images/logo.jpeg}" width="150" >
             </a>
         </div>
     </nav>
 </head>
 
 <body>
+
 <div class="container">
     <div class="row py-5 mt-4 align-items-center">
         <!-- For Demo Purpose -->
         <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
             <img alt="" class="img-fluid mb-3 d-none d-md-block"
                  src="https://bootstrapious.com/i/snippets/sn-registeration/illustration.svg">
-            <h1>Create an Account</h1>
-            <p class="font-italic text-muted mb-0">Create a minimal registeration page using Bootstrap 4 HTML form
-                elements.</p>
-            <p class="font-italic text-muted">Snippet By <a class="text-muted" href="https://bootstrapious.com">
-                <u>Bootstrapious</u></a>
-            </p>
         </div>
 
-        <!-- Registeration Form -->
+        <!-- Registration Form -->
         <div class="col-md-7 col-lg-6 ml-auto">
             <form action="/registration" method="post" th:object="${userDto}">
                 <div class="row">
 
                     <!-- First Name -->
+
                     <div class="input-group col-lg-6 mb-4">
                         <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <span class="input-group-text bg-white px-0 pl-0 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
+
                         <input class="form-control bg-white border-left-0 border-md" id="firstName" name="firstname"
-                               placeholder="First Name" th:field="*{firstName}" type="text">
+                               placeholder="Nume" th:field="*{firstName}" type="text">
+                        <label th:if="${#fields.hasErrors('firstName')}" th:class="'error'" th:errors="*{firstName}" class="col-lg-4 control-label" style="color:red;" ></label>
                     </div>
 
                     <!-- Last Name -->
                     <div class="input-group col-lg-6 mb-4">
                         <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <span class="input-group-text bg-white px-0 pl-0 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
                         <input class="form-control bg-white border-left-0 border-md" id="lastName" name="lastname"
-                               placeholder="Last Name" th:field="*{lastName}" type="text">
+                               placeholder="Prenume" th:field="*{lastName}" type="text">
+                        <label th:if="${#fields.hasErrors('lastName')}" th:class="'error'" th:errors="*{lastName}" class="col-lg-4 control-label" style="color:red;" ></label>
                     </div>
 
                     <!-- Email Address -->
                     <div class="input-group col-lg-12 mb-4">
                         <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <span class="input-group-text bg-white px-0 pl-0 border-md border-right-0">
                                 <i class="fa fa-envelope text-muted"></i>
                             </span>
                         </div>
                         <input class="form-control bg-white border-left-0 border-md" id="email" name="email"
-                               placeholder="Email Address" th:field="*{email}" type="email">
+                               placeholder="Email" th:field="*{email}" type="email"><br>
+                        <label th:if="${#fields.hasErrors('email')}" th:class="'error'" th:errors="*{email}" class="col-lg-4 control-label" style="color:red;" ></label>
                     </div>
 
                     <!-- Password -->
                     <div class="input-group col-lg-12 mb-4">
                         <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <span class="input-group-text bg-white px-0 pl-0 border-md border-right-0">
                                 <i class="fa fa-lock text-muted"></i>
                             </span>
                         </div>
                         <input class="form-control bg-white border-left-0 border-md" id="password" name="password"
-                               placeholder="Password" th:field="*{password}" type="password">
+                               placeholder="parola" th:field="*{password}" type="password">
+                        <label th:if="${#fields.hasErrors('password')}" th:class="'error'" th:errors="*{password}" class="col-lg-4 control-label" style="color:red;" ></label>
                     </div>
 
                     <!-- Phone Number -->
                     <div class="input-group col-lg-6 mb-4">
                         <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <span class="input-group-text bg-white px-0 pl-0 border-md border-right-0">
                                 <i class="fa fa-phone-square text-muted"></i>
                             </span>
                         </div>
                         <input class="form-control bg-white border-md border-left-0 pl-3" id="phoneNumber" name="phone"
-                               placeholder="Phone Number" th:field="*{phoneNumber}" type="tel">
+                               placeholder="Telefon" th:field="*{phoneNumber}" type="tel">
                     </div>
+                    <label th:if="${#fields.hasErrors('phoneNumber')}" th:class="'error'" th:errors="*{phoneNumber}" class="col-lg-4 control-label" style="color:red;" ></label>
 
                     <div class="input-group col-lg-6 mb-4">
                         <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <span class="input-group-text bg-white px-0 pl-0 border-md border-right-0">
                                 <i class="fa fa-phone-square text-muted"></i>
                             </span>
                         </div>
                         <input class="form-control bg-white border-md border-left-0 pl-3" id="date" name="date"
                                 type="date" placeholder="Date of birth" th:field="*{dateOfBirth}">
+
                     </div>
+                    <label th:if="${#fields.hasErrors('dateOfBirth')}" th:class="'error'" th:errors="*{dateOfBirth}"  style="color:red;  padding-left: 320px" ></label>
 
 
-                    <!-- Job -->
+                    <!-- Role -->
                     <div class="input-group col-lg-12 mb-4">
                         <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <span class="input-group-text bg-white px-0 pl-0 border-md border-right-0">
                                 <i class="fa fa-black-tie text-muted"></i>
                             </span>
                         </div>
                         <select class="form-control custom-select bg-white border-left-0 border-md" id="role"
                                 name="roletitle" th:field="*{role}">
-                            <option value="">Choose your role</option>
+                            <option value="">Register as</option>
                             <option th:each="role:${T(com.sda.project.model.Role).values()}" th:text="${role}"
                                     th:value="${role}"></option>
                         </select>
+                        <label th:if="${#fields.hasErrors('role')}" th:class="'error'" th:errors="*{role}" class="col-lg-4 control-label" style="color:red;" ></label>
                     </div>
 
 
-                    <div class="form-group">
+                    <div class="form-group" style="padding-left: 2rem;">
                         <div class="form-check">
                             <input class="form-check-input" id="gridCheck" th:field="*{agreeWithConditions}"
                                    type="checkbox">
-                            <label class="form-check-label" for="gridCheck">
-                                I Agree To Terms and Conditions
+                            <label class="form-check-label" for="gridCheck" >
+                                Sunt de acord cu <b>termeni și condițiile</b> site-ului web!
                             </label>
+                            <label th:if="${#fields.hasErrors('agreeWithConditions')}" th:class="'error'" th:errors="*{agreeWithConditions}" class="col-lg-4 control-label" style="color:red;" ></label>
                         </div>
                     </div>
 
                     <!-- Submit Button -->
-                    <button type="submit">Register</button>
+                    <div class="form-group col-lg-12 mx-auto mb-0" >
+                        <button class="btn btn-primary btn-block py-2" type="submit">
+                            <span class="font-weight-bold">Create your account</span>
+                        </button>
+                    </div>
 
 
                     <!-- Divider Text -->
