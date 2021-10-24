@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head class="header">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" id="bootstrap-css" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Mica | Piata: Autentificare</title>
+    <nav class="navbar navbar-expand-lg navbar-light py-3">
+        <div class="container">
+            <!-- Navbar Brand -->
+            <a class="navbar-brand" href="/home">
+                <img alt="logo" src="/static/images/logo.jpeg" th:src="@{images/logo.jpeg}" width="150px">
+            </a>
+        </div>
+    </nav>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="row py-5 mt-4 align-items-center">
+        <!-- For Demo Purpose -->
+        <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+            <img alt="" class="img-fluid mb-3 d-none d-md-block"
+                 src="/static/images/fructe-si-legume.jpg" th:src="@{images/fructe-si-legume.jpg}">
+        </div>
+
+        <!-- Login Form -->
+        <div class="col-md-7 col-lg-6 ml-auto">
+            <form action="/login" method="post" th:object="${userDto}">
+                <div class="row">
+
+
+                    <!-- Email Address -->
+                    <label>Email:</label>
+                    <div class="input-group col-lg-12 mb-4">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-0 border-md border-right-0">
+                                <i class="fa fa-envelope text-muted"></i>
+                            </span>
+                        </div>
+                        <input class="form-control bg-white border-left-0 border-md" id="email" name="email"
+                               placeholder="Email" th:field="*{email}" type="email">
+                    </div>
+
+                    <!-- Password -->
+                    <label>Parolă:</label>
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-0 border-md border-right-0">
+                                <i class="fa fa-lock text-muted"></i>
+                            </span>
+                        </div>
+                        <input class="form-control bg-white border-left-0 border-md" id="password" name="password"
+                               placeholder="Parolă" th:field="*{password}" type="password">
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group col-lg-12 mx-auto mb-0">
+                        <button class="btn btn-primary btn-block py-2" type="submit">
+                            <span class="font-weight-bold">Autentificare</span>
+                        </button>
+                    </div>
+
+                    <!-- Divider Text -->
+                    <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                        <div class="border-bottom w-100 ml-5"></div>
+                        <span class="px-2 small text-muted font-weight-bold text-muted">SAU</span>
+                        <div class="border-bottom w-100 mr-5"></div>
+                    </div>
+
+
+                    <!-- Already Registered -->
+                    <div class="text-center w-100">
+                        <p class="text-muted font-weight-bold">Nu ai cont? <a class="text-primary ml-2"
+                                                                              href="/registration">Înregistrează-te</a>
+                        </p>
+                    </div>
+                    <!-- Forgot Password -->
+                    <div class="text-center w-100">
+                        <p class="text-muted font-weight-bold">Ai uitat parola? <a class="text-primary ml-2"
+                                                                                   href="/changePassword">Recuperare
+                            parolă</a></p>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

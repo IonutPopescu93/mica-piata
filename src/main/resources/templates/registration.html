@@ -3,8 +3,6 @@
 <head class="header">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" id="bootstrap-css" rel="stylesheet">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="./js/login.js"></script>
-    <link href="./css/style.css" rel="stylesheet" type="text/css">
     <nav class="navbar navbar-expand-lg navbar-light py-3">
         <div class="container">
             <!-- Navbar Brand -->
@@ -22,7 +20,7 @@
         <!-- For Demo Purpose -->
         <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
             <img alt="" class="img-fluid mb-3 d-none d-md-block"
-                 src="https://bootstrapious.com/i/snippets/sn-registeration/illustration.svg">
+                 src="/static/images/fructe-si-legume.jpg" th:src="@{images/fructe-si-legume.jpg}">
         </div>
 
         <!-- Registration Form -->
@@ -76,7 +74,7 @@
                             </span>
                         </div>
                         <input class="form-control bg-white border-left-0 border-md" id="password" name="password"
-                               placeholder="parola" th:field="*{password}" type="password">
+                               placeholder="Parolă" th:field="*{password}" type="password">
                         <label th:if="${#fields.hasErrors('password')}" th:class="'error'" th:errors="*{password}" class="col-lg-4 control-label" style="color:red;" ></label>
                     </div>
 
@@ -113,8 +111,8 @@
                             </span>
                         </div>
                         <select class="form-control custom-select bg-white border-left-0 border-md" id="role"
-                                name="roletitle" th:field="*{role}">
-                            <option value="">Register as</option>
+                                name="role" th:field="*{role}">
+                            <option value="">Rolul de:</option>
                             <option th:each="role:${T(com.sda.project.model.Role).values()}" th:text="${role}"
                                     th:value="${role}"></option>
                         </select>
@@ -136,7 +134,7 @@
                     <!-- Submit Button -->
                     <div class="form-group col-lg-12 mx-auto mb-0" >
                         <button class="btn btn-primary btn-block py-2" type="submit">
-                            <span class="font-weight-bold">Create your account</span>
+                            <span class="font-weight-bold">Înregistrare</span>
                         </button>
                     </div>
 
@@ -144,15 +142,15 @@
                     <!-- Divider Text -->
                     <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
                         <div class="border-bottom w-100 ml-5"></div>
-                        <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
+                        <span class="px-2 small text-muted font-weight-bold text-muted">SAU</span>
                         <div class="border-bottom w-100 mr-5"></div>
                     </div>
 
 
                     <!-- Already Registered -->
                     <div class="text-center w-100">
-                        <p class="text-muted font-weight-bold">Already Registered? <a class="text-primary ml-2"
-                                                                                      href="#">Login</a></p>
+                        <p class="text-muted font-weight-bold">Deja înregistrat? <a class="text-primary ml-2"
+                                                                                    href="/login">Autentificare</a></p>
                     </div>
 
                 </div>
