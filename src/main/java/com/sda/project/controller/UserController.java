@@ -42,7 +42,7 @@ public class UserController {
             return "registration";
         }
         userService.addUser(userDto);
-        return "redirect:/registration";
+        return "redirect:/home";
     }
 
     @GetMapping(value = "/home")

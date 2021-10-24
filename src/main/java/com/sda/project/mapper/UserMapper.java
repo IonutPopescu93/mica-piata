@@ -3,6 +3,8 @@ package com.sda.project.mapper;
 import com.sda.project.dto.UserDto;
 import com.sda.project.model.Role;
 import com.sda.project.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -12,6 +14,8 @@ import java.util.List;
 @Service
 public class UserMapper {
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public User map(UserDto userDto) {
         User user = new User();
@@ -21,7 +25,11 @@ public class UserMapper {
         user.setEmail(userDto.getEmail());
         user.setDateOfBirth(LocalDate.parse(userDto.getDateOfBirth()));
         user.setRole(Role.valueOf(userDto.getRole()));
-        user.setPassword(userDto.getPassword());
+
+        String passwordInPlainText = userDto.getPassword();
+        String passwordInCryptoText = bCryptPasswordEncoder.encode(passwordInPlainText);
+
+        user.setPassword(passwordInCryptoText);
 
         return user;
     }
