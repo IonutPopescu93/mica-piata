@@ -32,8 +32,8 @@ public class ChangePasswordValidator {
             bindingResult.addError(fieldError);
         }
         String currentPassword = optionalUser.get().getPassword();
-//        String dtoCurrentPassword = bCryptPasswordEncoder.encode(changePasswordDto.getCurrentPassword());
-//        System.out.println(currentPassword + " " + dtoCurrentPassword);
+        String dtoCurrentPassword = bCryptPasswordEncoder.encode(changePasswordDto.getCurrentPassword());
+        System.out.println(currentPassword + " " + dtoCurrentPassword);
 
         if (!bCryptPasswordEncoder.matches(changePasswordDto.getCurrentPassword(), currentPassword)) {
             FieldError fieldError = new FieldError("changePasswordDto", "currentPassword", "Password is incorrect");
