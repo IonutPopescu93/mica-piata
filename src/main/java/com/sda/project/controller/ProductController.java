@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class ProductController {
 
-
     @Autowired
     private ProductRepository productRepository;
 
@@ -30,5 +29,4 @@ public class ProductController {
         productService.addProduct(productDto);
         return "redirect:/addProduct";
     }
-
 }

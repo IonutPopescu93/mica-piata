@@ -4,7 +4,6 @@
 
 ## Team ARES
 - IonutPopescu93 
-    
 - BudacuVlad 
 
 ---

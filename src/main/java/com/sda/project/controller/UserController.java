@@ -1,7 +1,7 @@
 package com.sda.project.controller;
 
 import com.sda.project.dto.ChangePasswordDto;
-import com.sda.project.dto.UserDto;
+import com.sda.project.dto.CreateUser;
 import com.sda.project.service.UserService;
 import com.sda.project.validator.ChangePasswordValidator;
 import com.sda.project.validator.UserValidator;
@@ -28,41 +28,43 @@ public class UserController {
 
     @GetMapping(value = "/registration")
     public String getRegistrationPage(Model model) {
-        UserDto userDto = new UserDto();
-        model.addAttribute("userDto", userDto);
+        CreateUser createUser = new CreateUser();
+        model.addAttribute("userDto", createUser);
         return "registration";
     }
 
     @PostMapping(value = "/registration")
-    public String postRegistrationPage(@ModelAttribute UserDto userDto, BindingResult bindingResult) {
+    public String postRegistrationPage(@ModelAttribute CreateUser createUser, BindingResult bindingResult) {
         System.out.println("S-a apelat postRegistrationPage!!!");
-        System.out.println(userDto);
-        userValidator.validate(userDto, bindingResult);
+        System.out.println(createUser);
+        userValidator.validate(createUser, bindingResult);
         if (bindingResult.hasErrors()){
             return "registration";
         }
-        userService.addUser(userDto);
+        userService.save(createUser);
         return "redirect:/home";
     }
 
-    @GetMapping(value = "/home")
+    @GetMapping("/home")
     public String getHomePage() {
         return "home";
     }
 
-    @GetMapping(value = "/login")
+    @GetMapping("/login")
     public String getLoginPage() {
         return "login";
     }
 
-    @GetMapping(value = "/changePassword")
+    @GetMapping("/changePassword")
     public String changePassword(Model model) {
         model.addAttribute("changePasswordDto", new ChangePasswordDto());
         return "changePassword";
     }
 
-    @PostMapping(value = "/changePassword")
-    public String postChangePassword(@ModelAttribute(value = "changePasswordDto") ChangePasswordDto changePasswordDto, BindingResult bindingResult, Authentication authentication) {
+    @PostMapping("/change-password")
+    public String postChangePassword(@ModelAttribute(value = "changePasswordDto") ChangePasswordDto changePasswordDto,
+                                     BindingResult bindingResult,
+                                     Authentication authentication) {
         System.out.println(authentication.getName());
         changePasswordValidator.validate(changePasswordDto, bindingResult, authentication.getName());
         if (bindingResult.hasErrors()) {
@@ -71,6 +73,4 @@ public class UserController {
         userService.changePassword(changePasswordDto, authentication.getName());
         return "redirect:/login";
     }
-
-
 }

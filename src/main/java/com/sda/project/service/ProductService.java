@@ -23,5 +23,4 @@ public class ProductService {
         Product product = productMapper.map(productDto);
         productRepository.save(product);
     }
-
 }

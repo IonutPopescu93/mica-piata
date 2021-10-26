@@ -1,28 +1,17 @@
 package com.sda.project.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import com.sda.project.model.Role;
+import lombok.Data;
 
-@Getter
-@Setter
-public class UserDto {
-
+@Data
+public class CreateUser {
 
     private String firstName;
-
     private String lastName;
-
     private String phoneNumber;
-
     private String email;
-
     private String dateOfBirth;
-
     private String password;
-
-    private String role;
-
+    private Role role;
     private Boolean agreeWithConditions;
-
 }

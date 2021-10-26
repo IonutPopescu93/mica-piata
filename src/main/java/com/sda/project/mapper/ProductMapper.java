@@ -3,12 +3,10 @@ package com.sda.project.mapper;
 import com.sda.project.dto.ProductDto;
 import com.sda.project.model.Category;
 import com.sda.project.model.Product;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-
-@Service
+@Component
 public class ProductMapper {
-
 
     public Product map(ProductDto productDto) {
         Product product = new Product();
@@ -21,5 +19,4 @@ public class ProductMapper {
 
         return product;
     }
-
 }
