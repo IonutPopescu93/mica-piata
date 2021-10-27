@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 // unrestricted
-                .antMatchers("/", "/index", "/register").permitAll()
+                .antMatchers("/", "/index","/home", "/register").permitAll()
                 // static resources
                 .antMatchers("/favicon.ico", "/images/**", "/css/**", "/js/**").permitAll()
                 // other restricted pages

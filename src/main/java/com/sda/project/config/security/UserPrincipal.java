@@ -1,4 +1,4 @@
-package com.sda.project.service;
+package com.sda.project.config.security;
 
 import com.sda.project.model.Role;
 import com.sda.project.model.User;
@@ -10,25 +10,28 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ *  Decorator pattern
+ *  UserPrincipal enhances the regular user with GrantedAuthorities (permissions)
+ */
 public class UserPrincipal implements UserDetails {
 
     private final User user;
-    private final Role role;
+    private final Set<Role> roles;
 
-    public UserPrincipal(User user, Role role) {
+    public UserPrincipal(User user, Set<Role> roles) {
         this.user = user;
-        this.role = role;
+        this.roles = roles;
     }
 
-    // get permissions
+    // prefix each role name with "ROLE_"
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // create authority from user role
-        GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + user.getRole());
-
-        // add authority to authorities
         Set<GrantedAuthority> authorities = new HashSet<>();
-        authorities.add(authority);
+        this.roles.forEach(role -> {
+            GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + role.getType().name());
+            authorities.add(authority);
+        });
 
         return authorities;
     }
@@ -60,6 +63,6 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return user.isEnabled();
     }
 }
