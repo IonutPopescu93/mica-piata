@@ -24,7 +24,7 @@ public class UserController {
         return "user/register";
     }
 
-    @PostMapping("register/add")
+    @PostMapping("/register/add")
     public String register(@ModelAttribute("userDto") UserDto userDto) {
         userService.save(userDto);
         return "home";
@@ -34,7 +34,7 @@ public class UserController {
     public String getLoginPage(Model model) {
         UserDto userDto = new UserDto();
         model.addAttribute("userDto", userDto);
-        return "login";
+        return "/login";
     }
 
     @PostMapping("/login")
@@ -42,12 +42,6 @@ public class UserController {
         userService.findByEmail(userDto.getEmail());
         return "redirect: /home";
     }
-
-    @GetMapping("/home")
-    public String getLandingPage() {
-        return "home";
-    }
-
 
 }
 

@@ -21,7 +21,6 @@
 <div class="container">
 
     <div class="row py-5 mt-4 align-items-center">
-        <!-- For Demo Purpose -->
         <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
             <img alt="" class="img-fluid mb-3 d-none d-md-block"
                  src="/static/images/fructe-si-legume.jpg" th:src="@{images/fructe-si-legume.jpg}">
@@ -29,7 +28,7 @@
 
         <!-- Login Form -->
         <div class="col-md-7 col-lg-6 ml-auto">
-            <form action="/login" method="post">
+            <form method="post" th:action="@{/login}" th:object="${userDto}">
                 <div class="row">
 
 
@@ -43,7 +42,7 @@
                             </span>
                         </div>
                         <input class="form-control bg-white border-left-0 border-md" id="email" name="username"
-                               placeholder="Email" type="email">
+                               placeholder="Email" th:field="*{email}" type="email">
                     </div>
 
                     <!-- Password -->
@@ -55,13 +54,13 @@
                             </span>
                         </div>
                         <input class="form-control bg-white border-left-0 border-md" id="password" name="password"
-                               placeholder="Parolă" type="password">
+                               placeholder="Parolă" th:field="*{password}" type="password">
                     </div>
 
                     <!-- Submit Button -->
                     <div class="form-group col-lg-12 mx-auto mb-0">
                         <button class="btn btn-primary btn-block py-2" type="submit">
-                            <span class="font-weight-bold" href="/home">Autentificare</span>
+                            <span class="font-weight-bold" >Autentificare</span>
                         </button>
                     </div>
 
@@ -72,22 +71,22 @@
                         <div class="border-bottom w-100 mr-5"></div>
                     </div>
 
-
                     <!-- Already Registered -->
                     <div class="text-center w-100">
                         <p class="text-muted font-weight-bold">Nu ai cont? <a class="text-primary ml-2"
-                                                                              href="/registration">Înregistrează-te</a>
+                                                                              th:href="@{/register}">Înregistrează-te</a>
                         </p>
                     </div>
                     <!-- Forgot Password -->
                     <div class="text-center w-100">
-                        <p class="text-muted font-weight-bold">Ai uitat parola? <a class="text-primary ml-2"
-                                                                                   href="/change-password">Schimbă parola</a></p>
+                        <p class="text-muted font-weight-bold">Ai uitat parola? <a class="text-primary ml-2" href="/change-password">Schimbă parola</a></p>
+                    </div>
+
                     </div>
 
                 </div>
             </form>
-        </div>
+
     </div>
 </div>
 </body>

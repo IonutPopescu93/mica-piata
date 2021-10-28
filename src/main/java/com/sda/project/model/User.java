@@ -32,6 +32,7 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
     public User() {
+        this.enabled = true;
     }
 
     public User(String email, String password, String firstName, String lastName, String phoneNumber, LocalDate dateOfBirth) {
