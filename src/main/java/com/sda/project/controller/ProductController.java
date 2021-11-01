@@ -3,6 +3,8 @@ package com.sda.project.controller;
 import com.sda.project.dto.ProductDto;
 import com.sda.project.repository.ProductRepository;
 import com.sda.project.service.ProductService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +15,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class ProductController {
 
-    @Autowired
-    private ProductRepository productRepository;
+    private static final Logger log = LoggerFactory.getLogger(ProductController.class);
+
+
+    private final ProductRepository productRepository;
+    private final ProductService productService;
 
     @Autowired
-    private ProductService productService;
+    public ProductController(ProductRepository productRepository, ProductService productService) {
+        this.productRepository = productRepository;
+        this.productService = productService;
+    }
 
     @GetMapping(value = "/addProduct")
     public String getAddProductPage(Model model) {
@@ -28,5 +36,11 @@ public class ProductController {
     public String postAddProductPage(@ModelAttribute(value = "productDto") ProductDto productDto) {
         productService.addProduct(productDto);
         return "redirect:/addProduct";
+    }
+
+    @GetMapping(value = "/listProduct")
+    public String getProductListPage(Model model) {
+        model.addAttribute("product", productService.findAll());
+        return "/product/product-list";
     }
 }
