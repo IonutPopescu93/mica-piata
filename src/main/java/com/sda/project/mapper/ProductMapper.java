@@ -10,7 +10,6 @@ public class ProductMapper {
 
     public Product map(ProductDto productDto) {
         Product product = new Product();
-
         product.setProductName(productDto.getProductName());
         product.setDescription(productDto.getDescription());
         product.setCategory(Category.valueOf(productDto.getCategory()));

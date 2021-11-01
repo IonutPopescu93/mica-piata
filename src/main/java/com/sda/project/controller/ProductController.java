@@ -17,7 +17,6 @@ public class ProductController {
 
     private static final Logger log = LoggerFactory.getLogger(ProductController.class);
 
-
     private final ProductRepository productRepository;
     private final ProductService productService;
 
@@ -27,20 +26,23 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping(value = "/addProduct")
-    public String getAddProductPage(Model model) {
-        return "/product/addProduct";
+    @GetMapping(value = "/product-add")
+    public String showAddForm(Model model, ProductDto productDto) {
+        model.addAttribute("productDto", productDto);
+        return "/product/product-add";
     }
 
-    @PostMapping(value = "/addProduct")
-    public String postAddProductPage(@ModelAttribute(value = "productDto") ProductDto productDto) {
-        productService.addProduct(productDto);
-        return "redirect:/addProduct";
+    @PostMapping(value = "/product-add")
+    public String save(Model model, @ModelAttribute("productDto") ProductDto productDto) {
+        productService.save(productDto);
+        model.addAttribute("productDto", productDto);
+        return "redirect:/product-add";
+
     }
 
-    @GetMapping(value = "/listProduct")
+    @GetMapping(value = "/products")
     public String getProductListPage(Model model) {
-        model.addAttribute("product", productService.findAll());
-        return "/product/product-list";
+        return "/product/products-list";
     }
 }
+
