@@ -21,7 +21,7 @@ public class ProductController {
 
     @GetMapping(value = "/addProduct")
     public String getAddProductPage(Model model) {
-        return "/addProduct";
+        return "/product/addProduct";
     }
 
     @PostMapping(value = "/addProduct")
