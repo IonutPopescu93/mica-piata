@@ -15,33 +15,30 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class ProductController {
 
-    private static final Logger log = LoggerFactory.getLogger(ProductController.class);
-
-    private final ProductRepository productRepository;
     private final ProductService productService;
 
     @Autowired
-    public ProductController(ProductRepository productRepository, ProductService productService) {
-        this.productRepository = productRepository;
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
-    @GetMapping(value = "/product-add")
-    public String showAddForm(Model model, ProductDto productDto) {
-        model.addAttribute("productDto", productDto);
+    // show an empty dto object
+    @GetMapping("/products/add")
+    public String showAddForm(Model model) {
+        model.addAttribute("productDto", new ProductDto());
         return "/product/product-add";
     }
 
-    @PostMapping(value = "/product-add")
-    public String save(Model model, @ModelAttribute("productDto") ProductDto productDto) {
+    // the dto contains all inputs from user
+    @PostMapping("/products/add")
+    public String save(@ModelAttribute("productDto") ProductDto productDto) {
         productService.save(productDto);
-        model.addAttribute("productDto", productDto);
-        return "redirect:/product-add";
-
+        return "redirect:/products";
     }
 
-    @GetMapping(value = "/products")
+    @GetMapping("/products")
     public String getProductListPage(Model model) {
+        // TODO: finish this
         return "/product/products-list";
     }
 }

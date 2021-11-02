@@ -25,11 +25,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 // common
-                .antMatchers("/", "/index", "/register/**", "/login", "/products").permitAll()
+                .antMatchers("/", "/index", "/register/**", "/login").permitAll()
+
+                // no authorization needed
+                .antMatchers("/home", "/products").permitAll()
 
                 // temporary
                 // TODO: remove this in production and move
-                .antMatchers("/home", "/admin", "/product-add").permitAll()
+                .antMatchers("/products/add", "/products/edit").permitAll()
 
                 // static resources
                 .antMatchers("/static/favicon.ico", "/images/**", "/js/**", "/css/**").permitAll()

@@ -18,6 +18,7 @@ public class Product {
     private String productName;
     private String description;
 
+    @Enumerated(EnumType.STRING)
     private Category category;
 
     private Double price;
