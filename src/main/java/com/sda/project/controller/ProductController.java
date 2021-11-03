@@ -1,6 +1,7 @@
 package com.sda.project.controller;
 
 import com.sda.project.dto.ProductDto;
+import com.sda.project.model.Product;
 import com.sda.project.repository.ProductRepository;
 import com.sda.project.service.ProductService;
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -26,7 +28,7 @@ public class ProductController {
     @GetMapping("/products/add")
     public String showAddForm(Model model) {
         model.addAttribute("productDto", new ProductDto());
-        return "/product/product-add";
+        return "product/product-add";
     }
 
     // the dto contains all inputs from user
@@ -38,8 +40,23 @@ public class ProductController {
 
     @GetMapping("/products")
     public String getProductListPage(Model model) {
-        // TODO: finish this
-        return "/product/products-list";
+        model.addAttribute("productsDto", productService.findAll());
+        return "product/products";
     }
+
+    @GetMapping("products/{id}")
+    public String showEditForm(Model model, @PathVariable Long id) {
+        ProductDto productToUpdate = productService.findById(id);
+        model.addAttribute("productDto", productToUpdate);
+        return "product/edit-product";
+    }
+
+    @PostMapping("/products/{id}/edit")
+    public String update(@PathVariable Long id,
+                         @ModelAttribute ProductDto productDto) {
+        productService.update(productDto);
+        return "redirect:/products";
+    }
+
 }
 

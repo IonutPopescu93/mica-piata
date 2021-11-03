@@ -43,6 +43,11 @@ public class UserController {
         return "redirect: /home";
     }
 
+    @GetMapping("/users")
+    public String getProductListPage(Model model) {
+        model.addAttribute("usersDto", userService.findAll());
+        return "user/users";
+    }
 }
 
 

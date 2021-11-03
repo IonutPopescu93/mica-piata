@@ -12,13 +12,14 @@
     <title>Mica|Piata: Acasa</title>
 </head>
 <body>
-<nav class="navbar navbar navbar-fixed-top" style="background:grey">
+
+<nav class="navbar navbar navbar-fixed-top" style="background:#98e1f5">
     <form action="/action_page.php" class="navbar-form">
         <div>
-            <a class="navbar-brand" href="/home">
-                <img alt="logo" class="img-circle" href="/home" src="/static/images/logo.jpeg" style="height: 150px"
+            <a class="navbar-brand" th:href="@{/home}">
+                <img alt="logo" class="img-circle" href="/home" src="/static/images/logo.jpeg" style="height: 120px"
                      th:src="@{images/logo.jpeg}"></a>
-        </div>
+
         <div class="form-group" style="padding: 6px 100px 6px 200px;width: 1300px; vertical-align: bottom">
             <input class="form-control" name="search" placeholder="Cauta" style="padding:6px 170px;" type="text">
             <button class="btn btn-default" type="submit">
@@ -27,17 +28,17 @@
             <ul class="nav navbar-nav navbar-right" style="background:white">
                 <li><a href="#" sec:authorize="isAuthenticated()"><span
                         class="glyphicon glyphicon-shopping-cart"></span> Cos</a></li>
-                <li><a href="/register" sec:authorize="isAnonymous()"><span class="glyphicon glyphicon-user"></span>
+                <li><a th:href="@{/register}" sec:authorize="isAnonymous()"><span class="glyphicon glyphicon-user"></span>
                     Inregistrare</a></li>
-                <li><a href="/login" sec:authorize="isAnonymous()"><span class="glyphicon glyphicon-log-in"></span>
+                <li><a th:href="@{/login}" sec:authorize="isAnonymous()"><span class="glyphicon glyphicon-log-in"></span>
                     Autentificare</a></li>
-                <li><a href="#" sec:authorize="isAnonymous()"><span class="glyphicon glyphicon-wrench"></span>
-                    Setari</a></li>
+                <li><a th:href="@{/products}"><span class="glyphicon glyphicon-wrench"></span>
+                    Admin</a></li>
             </ul>
         </div>
         <div class="container-fluid"
              style="background:linear-gradient(to right,#ff1d25 5%,#a0328c 35%,#7040a4 45%,#4359c7 55%,#0082e6); margin-top: 30px; height:45px;">
-            <button style="margin:6px 150px" type="button">A</button>
+        </div>
         </div>
     </form>
 </nav>

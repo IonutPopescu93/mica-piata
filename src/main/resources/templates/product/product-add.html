@@ -4,20 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Add Product - Dashboard HTML Template</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700"/>
+  <title>Add Product</title>
+  <link th:rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Roboto:400,700}"/>
 
-  <link rel="stylesheet" href="css/fontawesome.min.css" />
+  <link th:href="@{/css/fontawesome.min.css}" th:rel="stylesheet"/>
 
-  <link rel="stylesheet" href="jquery-ui-datepicker/jquery-ui.min.css" type="text/css" />
+  <link  th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}" th:rel="stylesheet"/>
 
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link th:href="@{/webjars/font-awesome/5.15.4/css/all.min.css}" th:rel="stylesheet"/>
 
-  <link rel="stylesheet" href="css/templatemo-style.css">
-
+  <link th:rel="stylesheet" th:href="@{/css/templatemo-style.css}"/>
 </head>
 
 <body>
+<div th:replace="fragments/header :: navbar"/>
 <form class="tm-edit-product-form"  method="post" th:action="@{/products/add}" th:object="${productDto}">
 <div class="container tm-mt-big tm-mb-big"  >
   <div class="row">
@@ -55,16 +55,16 @@
               <div class="row">
                 <div class="form-group mb-3 col-xs-12 col-sm-6">
                   <label for="price">Preț</label>
-                  <input id="price" name="price" type="real number" class="form-control validate" data-large-mode="true" required th:field="*{price}"/>
+                  <input id="price" name="price" type="number" class="form-control validate" data-large-mode="true" required th:field="*{price}"/>
                 </div>
 
                 <div class="form-group mb-3 col-xs-12 col-sm-6">
                   <label for="stock">Cantitate in stoc</label>
-                  <input id="stock" name="stock" type="text" class="form-control validate" th:field="*{unitsInStock}" required/>
+                  <input id="stock" name="stock" type="number" class="form-control validate" th:field="*{unitsInStock}" required/>
                 </div>
               </div>
-
           </div>
+
           <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
             <div class="tm-product-img-dummy mx-auto">
               <i class="fas fa-cloud-upload-alt tm-upload-icon" onclick="document.getElementById('fileInput').click();"></i>
@@ -78,6 +78,9 @@
 
           <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block text-uppercase">Adaugă produs!</button>
+            <a th:href="@{/products}">
+              <button type="button" class="btn btn-primary btn-block text-uppercase" >Cancel</button>
+            </a>
           </div>
         </div>
       </div>
@@ -86,16 +89,13 @@
 </div>
 
 </form>
-<script src="js/jquery-3.3.1.min.js"></script>
-<!-- https://jquery.com/download/ -->
-<script src="jquery-ui-datepicker/jquery-ui.min.js"></script>
-<!-- https://jqueryui.com/download/ -->
-<script src="js/bootstrap.min.js"></script>
-<!-- https://getbootstrap.com/ -->
-<script>
-      $(function() {
-        $("#expire_date").datepicker();
-      });
-    </script>
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+
+<script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.min.js}"></script>
+
+<script>$(function(){$("#expire_date").datepicker();});</script>
+
+
+
 </body>
 </html>

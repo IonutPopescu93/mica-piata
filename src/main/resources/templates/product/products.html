@@ -1,0 +1,103 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Products</title>
+  <link th:rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Roboto:400,700}"/>
+
+  <link th:href="@{/css/fontawesome.min.css}" th:rel="stylesheet"/>
+
+  <link  th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}" th:rel="stylesheet"/>
+
+  <link th:href="@{/webjars/font-awesome/5.15.4/css/all.min.css}" th:rel="stylesheet"/>
+
+  <link th:rel="stylesheet" th:href="@{/css/templatemo-style.css}"/>
+</head>
+
+<body>
+
+<div th:replace="fragments/header :: navbar"/>
+<div class="container mt-5">
+  <div class="row tm-content-row">
+    <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
+      <div class="tm-bg-primary-dark tm-block tm-block-products">
+        <div class="tm-product-table-container">
+          <table class="table table-hover tm-table-small tm-product-table" method="get" th:action="@{/products}" th:object="${productsDto}" >
+            <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Denumire</th>
+              <th scope="col">Preț</th>
+              <th scope="col">Stoc</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Edit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="productDto : ${productsDto}">
+              <th scope="row"><input type="checkbox" /></th>
+              <td class="tm-product-name"><a th:text="${productDto.productName}"></a></td>
+              <td><a th:text="${productDto.price}"></a></td>
+              <td><a th:text="${productDto.unitsInStock}"></a></td>
+              <td><a th:text="${productDto.category}" text-lowercase></a></td>
+              <td>
+                <!-- edit button -->
+                <a th:href="@{/products/{id} (id= ${productDto.id})}">
+                  <!-- pencil icon -->
+                  <i class="fa fa-edit" style="font-size:20px;color:white"></i>
+                </a>
+              </td>
+            </tr>
+                <a href="#" class="tm-product-delete-link">
+                  <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                </a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- table container -->
+        <a th:href="@{/products/add}">
+          <button class="btn btn-primary btn-block text-uppercase mb-3" >
+            Adaugă produs nou
+          </button>
+        </a>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-block-col">
+      <div class="tm-bg-primary-dark tm-block tm-block-product-categories">
+        <h2 class="tm-block-title">Product Categories</h2>
+        <div class="tm-product-table-container">
+          <table class="table tm-table-small tm-product-table">
+            <tbody>
+            <tr>
+              <td class="tm-product-name">Product Category 1</td>
+              <td class="text-center">
+                <a href="#" class="tm-product-delete-link">
+                  <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                </a>
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+        <!-- table container -->
+        <button class="btn btn-primary btn-block text-uppercase mb-3">
+          Add new category
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+
+<script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.min.js}"></script>
+
+<script>$(function(){$("#expire_date").datepicker();});</script>
+
+</body>
+</html>
