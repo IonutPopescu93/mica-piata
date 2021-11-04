@@ -1,11 +1,7 @@
 package com.sda.project.controller;
 
 import com.sda.project.dto.ProductDto;
-import com.sda.project.model.Product;
-import com.sda.project.repository.ProductRepository;
 import com.sda.project.service.ProductService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,6 +52,12 @@ public class ProductController {
                          @ModelAttribute ProductDto productDto) {
         productService.update(productDto);
         return "redirect:/products";
+    }
+
+    @GetMapping("product/detail")
+    private String showProductDetail() {
+
+        return "product/product-detail";
     }
 
 }
