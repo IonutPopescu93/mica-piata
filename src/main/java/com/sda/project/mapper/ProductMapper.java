@@ -30,10 +30,11 @@ public class ProductMapper {
         return dto;
     }
 
-    public Product update(Product productToUpdte, ProductDto data) {
-        productToUpdte.setProductName(data.getProductName());
-        productToUpdte.setDescription(data.getDescription());
-        productToUpdte.setPrice(Double.valueOf(data.getPrice()));
-        return productToUpdte;
+    public Product update(Product productToUpdate, ProductDto data) {
+        productToUpdate.setProductName(data.getProductName());
+        productToUpdate.setUnitsInStock(Double.valueOf(data.getUnitsInStock()));
+        productToUpdate.setPrice(Double.valueOf(data.getPrice()));
+        productToUpdate.setCategory(Category.valueOf(data.getCategory()));
+        return productToUpdate;
     }
 }

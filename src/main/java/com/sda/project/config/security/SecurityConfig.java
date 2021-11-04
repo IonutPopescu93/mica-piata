@@ -32,15 +32,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 // temporary
                 // TODO: remove this in production and move
-                .antMatchers("/products/add", "/products/edit").permitAll()
+                .antMatchers("/products/add", "/products/edit", "/users").permitAll()
 
                 // static resources
                 .antMatchers("/static/favicon.ico", "/images/**", "/js/**", "/css/**").permitAll()
 
                 // features and permissions
                 // TODO: add all features before production
-                .antMatchers("/users").hasRole("ADMIN")
-                // .antMatchers("/pets").hasAnyRole("USER", "ADMIN")
+                .antMatchers().hasRole("ADMIN")
                 .anyRequest().authenticated();
 
         // add custom login form

@@ -1,5 +1,6 @@
 package com.sda.project.controller;
 
+import com.sda.project.dto.ProductDto;
 import com.sda.project.dto.UserDto;
 import com.sda.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -43,11 +45,6 @@ public class UserController {
         return "redirect: /home";
     }
 
-    @GetMapping("/users")
-    public String getProductListPage(Model model) {
-        model.addAttribute("usersDto", userService.findAll());
-        return "user/users";
-    }
 }
 
 

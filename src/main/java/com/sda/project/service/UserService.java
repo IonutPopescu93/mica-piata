@@ -3,6 +3,7 @@ package com.sda.project.service;
 import com.sda.project.config.security.UserPrincipal;
 import com.sda.project.controller.exception.ResourceAlreadyExistsException;
 import com.sda.project.controller.exception.ResourceNotFoundException;
+import com.sda.project.dto.ProductDto;
 import com.sda.project.dto.UserDto;
 import com.sda.project.mapper.UserMapper;
 import com.sda.project.model.Role;
@@ -22,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -57,10 +59,12 @@ public class UserService implements UserDetailsService {
                 .orElseGet(() -> saveUser(userDto));
     }
 
-    public List<User> findAll() {
+    public List<UserDto> findAll() {
         log.info("find users");
 
-        return userRepository.findAll();
+        return userRepository.findAll().stream()
+                .map(user -> userMapper.map(user))
+                .collect(Collectors.toList());
     }
 
     public User findByEmail(String email) {
@@ -81,17 +85,21 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException(email + " not found"));
     }
 
-    public User findById(Long id) {
-        log.info("find user {}", id);
+    public UserDto findById(Long id) {
 
+        // find by id from repo
         return userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("not found"));
+                .map(user -> userMapper.map(user))
+                .orElseThrow(() -> new ResourceNotFoundException("user not found"));
     }
 
-    public void update(User user) {
-        log.info("update user {}", user);
-
-        userRepository.save(user);
+    public void update(UserDto dto) {
+        userRepository.findById(dto.getId())
+                .map(user -> userMapper.update(user, dto))
+                .map(updatedUser -> userRepository.save(updatedUser))
+                .orElseThrow(() -> {
+                    throw new ResourceNotFoundException("user not found");
+                });
     }
 
     public void enable(Long id) {
@@ -137,5 +145,13 @@ public class UserService implements UserDetailsService {
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.addRole(userRole);
         return userRepository.save(user);
+    }
+
+    public void delete(Long id) {
+        log.info("delete project {}", id);
+
+        userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("user not found"));
+        userRepository.deleteById(id);
     }
 }

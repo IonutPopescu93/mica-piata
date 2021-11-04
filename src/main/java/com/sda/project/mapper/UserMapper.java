@@ -16,7 +16,26 @@ public class UserMapper {
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
         user.setPhoneNumber(userDto.getPhoneNumber());
-        user.setDateOfBirth(LocalDate.parse(userDto.getDateOfBirth()));
         return user;
+    }
+
+    public UserDto map(User entity){
+        UserDto dto = new UserDto();
+        dto.setId(entity.getId());
+        dto.setFirstName(entity.getFirstName());
+        dto.setLastName(entity.getLastName());
+        dto.setPhoneNumber(entity.getLastName());
+        dto.setEmail(entity.getEmail());
+        dto.setPhoneNumber(entity.getPhoneNumber());
+        return dto;
+    }
+
+    public User update(User userToUpdate, UserDto data) {
+        userToUpdate.setFirstName(data.getFirstName());
+        userToUpdate.setLastName(data.getLastName());
+        userToUpdate.setEmail(data.getEmail());
+        userToUpdate.setPhoneNumber(data.getPhoneNumber());
+        userToUpdate.setPassword(data.getPassword());
+        return userToUpdate;
     }
 }

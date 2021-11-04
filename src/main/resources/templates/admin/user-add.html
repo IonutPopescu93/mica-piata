@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Accounts - Product Admin Template</title>
+    <link th:rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Roboto:400,700}"/>
+
+    <link th:href="@{/css/fontawesome.min.css}" th:rel="stylesheet"/>
+
+    <link  th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}" th:rel="stylesheet"/>
+
+    <link th:href="@{/webjars/font-awesome/5.15.4/css/all.min.css}" th:rel="stylesheet"/>
+
+    <link th:rel="stylesheet" th:href="@{/css/templatemo-style.css}"/>
+</head>
+
+<body>
+<div th:replace="fragments/header :: navbar"/>
+<div class="container mt-5">
+    <form class="tm-edit-product-form"  method="post" th:action="@{/users/add}"  th:object="${userDto}">
+        <div class="row tm-content-row">
+            <div class="tm-block-col tm-col-avatar">
+                <div class="tm-bg-primary-dark tm-block tm-block-avatar">
+                    <h2 class="tm-block-title">Schimbă Avatar</h2>
+                    <div class="tm-avatar-container">
+                        <a href="#" class="tm-avatar-delete-link">
+                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                        </a>
+                    </div>
+                    <button class="btn btn-primary btn-block text-uppercase" >
+                        Adaugă fotografie!
+                    </button>
+                </div>
+            </div>
+            <div class="tm-block-col tm-col-account-settings">
+                <div class="tm-bg-primary-dark tm-block tm-block-settings">
+                    <h2 class="tm-block-title">Setări</h2>
+                    <form action="" class="tm-signup-form row">
+                        <div >
+                            <label for="name" style="color:white" >Nume</label>
+                            <input id="name" name="name" type="text" class="form-control validate" th:field="*{firstName}"/>
+                        </div>
+                        <div >
+                            <label for="lastName" style="color:white" >Prenume</label>
+                            <input class="form-control validate" id="lastName" name="lastName" type="text" th:field="*{lastName}"/>
+                        </div>
+                        <div >
+                            <label for="email" style="color:white">Email</label>
+                            <input class="form-control validate" id="email" name="email" type="email" th:field="*{email}"/>
+                        </div>
+                        <div>
+                            <label for="password" style="color:white">Parolă</label>
+                            <input class="form-control validate" id="password" name="password" type="password" th:field="*{password}"/>
+                        </div>
+
+                        <div>
+                            <label for="phone" style="color:white">Telefon</label>
+                            <input class="form-control validate" id="phone" name="phone" type="tel" th:field="*{phoneNumber}"/>
+                        </div>
+                        <div>
+                            <label class="tm-hide-sm">&nbsp;</label>
+
+                            <button class="btn btn-primary btn-block text-uppercase" type="submit">Adaugă</button>
+
+
+                            <a th:href="@{/users}">
+                                <button class="btn btn-primary btn-block text-uppercase" type="button">Cancel</button>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+
+<script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.min.js}"></script>
+
+<script>$(function(){$("#expire_date").datepicker();});</script>
+</body>
+</html>

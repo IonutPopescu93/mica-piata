@@ -19,7 +19,6 @@ public class User {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private LocalDate dateOfBirth;
     private Boolean enabled;
 
     @ManyToMany
@@ -35,13 +34,12 @@ public class User {
         this.enabled = true;
     }
 
-    public User(String email, String password, String firstName, String lastName, String phoneNumber, LocalDate dateOfBirth) {
+    public User(String email, String password, String firstName, String lastName, String phoneNumber) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
-        this.dateOfBirth = dateOfBirth;
         this.enabled = true;
     }
 
@@ -52,14 +50,7 @@ public class User {
         this.lastName = lastName;
     }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
 
-    public User setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-        return this;
-    }
 
     public Long getId() {
         return id;
