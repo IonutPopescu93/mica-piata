@@ -29,7 +29,7 @@ public class UserController {
     @PostMapping("/register/add")
     public String register(@ModelAttribute("userDto") UserDto userDto) {
         userService.save(userDto);
-        return "home";
+        return "redirect:/home";
     }
 
     @GetMapping("/login")
@@ -42,7 +42,7 @@ public class UserController {
     @PostMapping("/login")
     public String login(@ModelAttribute("userDto") UserDto userDto) {
         userService.findByEmail(userDto.getEmail());
-        return "redirect: /home";
+        return "redirect:/home";
     }
 
 }

@@ -28,11 +28,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/index", "/register/**", "/login").permitAll()
 
                 // no authorization needed
-                .antMatchers("/home", "/products").permitAll()
+                .antMatchers("/home", "/products","/product/**").permitAll()
 
                 // temporary
                 // TODO: remove this in production and move
-                .antMatchers("/products/add", "/products/edit", "/users").permitAll()
+                .antMatchers("/admin/**").permitAll()
 
                 // static resources
                 .antMatchers("/static/favicon.ico", "/images/**", "/js/**", "/css/**").permitAll()

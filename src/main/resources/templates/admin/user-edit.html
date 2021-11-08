@@ -19,7 +19,7 @@
 <body>
 <div th:replace="fragments/header :: navbar"/>
 <div class="container mt-5">
-<form class="tm-edit-product-form"  method="post" th:action="@{/users/{id}/edit (id = ${userDto.id})}" th:object="${userDto}">
+<form class="tm-edit-product-form"  method="post" th:action="@{/admin/users/{id}/edit (id = ${userDto.id})}" th:object="${userDto}">
         <div class="row tm-content-row">
             <div class="tm-block-col tm-col-avatar">
                 <div class="tm-bg-primary-dark tm-block tm-block-avatar">
@@ -40,33 +40,33 @@
                     <form action="" class="tm-signup-form row">
                         <div >
                             <label for="name" style="color:white">Nume</label>
-                            <input id="name" name="name" type="text" class="form-control validate" th:field="*{firstName}"/>
+                            <input id="name" name="name" type="text" class="form-control validate" th:field="*{firstName}" required/>
                         </div>
                         <div >
                             <label for="lastName" style="color:white" >Prenume</label>
-                            <input class="form-control validate" id="lastName" name="lastName" type="text" th:field="*{lastName}"/>
+                            <input class="form-control validate" id="lastName" name="lastName" type="text" th:field="*{lastName}" required/>
                         </div>
                         <div >
                             <label for="email" style="color:white">Email</label>
-                            <input class="form-control validate" id="email" name="email" type="email" th:field="*{email}"/>
+                            <input class="form-control validate" id="email" name="email" type="email" th:field="*{email}" required/>
                         </div>
                         <div>
                             <label for="password" style="color:white">Parolă</label>
-                            <input class="form-control validate" id="password" name="password" type="password" th:field="*{password}"/>
+                            <input class="form-control validate" id="password" name="password" type="password" th:field="*{password}" required/>
                         </div>
 
                         <div>
                             <label for="phone" style="color:white">Telefon</label>
-                            <input class="form-control validate" id="phone" name="phone" type="tel" th:field="*{phoneNumber}"/>
+                            <input class="form-control validate" id="phone" name="phone" type="tel" th:field="*{phoneNumber}" required/>
                         </div>
                         <div>
                             <label class="tm-hide-sm">&nbsp;</label>
 
                             <button class="btn btn-primary btn-block text-uppercase" type="submit">Update Profile</button>
 
-                            <button class="btn btn-primary btn-block text-uppercase" type="submit" th:href="@{/users/{id}/delete(id = ${userDto.id})}">Delete Account</button>
+                            <button class="btn btn-primary btn-block text-uppercase" type="submit" th:href="@{/admin/users/{id}/delete(id = ${userDto.id})}">Delete Account</button>
 
-                            <a th:href="@{/users}">
+                            <a th:href="@{/admin/users}">
                                 <button class="btn btn-primary btn-block text-uppercase" type="button">Cancel</button>
                             </a>
                         </div>

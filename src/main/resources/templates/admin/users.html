@@ -22,7 +22,7 @@
         <div class="row tm-content-row">
           <div class="col-12 tm-block-col">
             <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
-              <a th:href="@{/users/user-add}"><button type="button" class="btn btn-primary btn-block text-uppercase" >Adaugă account</button></a>
+              <a th:href="@{/admin/users/user-add}"><button type="button" class="btn btn-primary btn-block text-uppercase" >Adaugă account</button></a>
               <br></br>
               <h2 class="tm-block-title">List of Accounts</h2>
               <select class="custom-select">
@@ -32,7 +32,7 @@
                 <option value="3">Merchant</option>
                 <option value="4">Customer</option>
               </select>
-          <table class="table table-hover tm-table-small tm-product-table" method="get" th:action="@{/users}" th:object="${usersDto}" >
+          <table class="table table-hover tm-table-small tm-product-table" method="get" th:action="@{/admin/users}" th:object="${usersDto}" >
             <thead>
             <tr>
               <th scope="col">Nume</th>
@@ -48,7 +48,7 @@
               <td><a th:text="${userDto.lastName}"></a></td>
               <td><a th:text="${userDto.email}"></a></td>
               <td><a th:text="${userDto.phoneNumber}"></a></td>
-              <td><a th:href="@{/users/{id} (id= ${userDto.id})}"><i class="fa fa-edit" style="font-size:20px;color:white"></i></a></td>
+              <td><a th:href="@{/admin/users/{id} (id= ${userDto.id})}"><i class="fa fa-edit" style="font-size:20px;color:white"></i></a></td>
 
             </td>
             </tr>

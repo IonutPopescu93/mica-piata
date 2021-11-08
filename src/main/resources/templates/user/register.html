@@ -88,50 +88,7 @@
                         <input class="form-control bg-white border-md border-left-0 pl-3" id="phoneNumber" name="phone"
                                placeholder="Telefon" th:field="*{phoneNumber}" type="tel">
                     </div>
-<!--                    <label th:if="${#fields.hasErrors('phoneNumber')}" th:class="'error'" th:errors="*{phoneNumber}" class="col-lg-4 control-label" style="color:red;" ></label>-->
-
-<!--                    <div class="input-group col-lg-6 mb-4">-->
-<!--                        <div class="input-group-prepend">-->
-<!--                            <span class="input-group-text bg-white px-0 pl-0 border-md border-right-0">-->
-<!--                                <i class="fa fa-phone-square text-muted"></i>-->
-<!--                            </span>-->
-<!--                        </div>-->
-<!--                        <input class="form-control bg-white border-md border-left-0 pl-3" id="date" name="date"-->
-<!--                                type="date" placeholder="Date of birth" th:field="*{dateOfBirth}">-->
-
-<!--                    </div>-->
-<!--                    <label th:if="${#fields.hasErrors('dateOfBirth')}" th:class="'error'" th:errors="*{dateOfBirth}"  style="color:red;  padding-left: 320px" ></label>-->
-
-
-<!--                    &lt;!&ndash; Role &ndash;&gt;-->
-<!--                    <div class="input-group col-lg-12 mb-4">-->
-<!--                        <div class="input-group-prepend">-->
-<!--                            <span class="input-group-text bg-white px-0 pl-0 border-md border-right-0">-->
-<!--                                <i class="fa fa-black-tie text-muted"></i>-->
-<!--                            </span>-->
-<!--                        </div>-->
-<!--                        <select class="form-control custom-select bg-white border-left-0 border-md" id="role"-->
-<!--                                name="role" th:field="*{role}">-->
-<!--                            <option value="">Rolul de:</option>-->
-<!--                            <option th:each="role:${T(com.sda.project.model.Role).values()}" th:text="${role}"-->
-<!--                                    th:value="${role}"></option>-->
-<!--                        </select>-->
-<!--                        <label th:if="${#fields.hasErrors('role')}" th:class="'error'" th:errors="*{role}" class="col-lg-4 control-label" style="color:red;" ></label>-->
-<!--                    </div>-->
-
-
-<!--                    <div class="form-group" style="padding-left: 2rem;">-->
-<!--                        <div class="form-check">-->
-<!--                            <input class="form-check-input" id="gridCheck" th:field="*{agreeWithConditions}"-->
-<!--                                   type="checkbox">-->
-<!--                            <label class="form-check-label" for="gridCheck" >-->
-<!--                                Sunt de acord cu <b>termeni și condițiile</b> site-ului web!-->
-<!--                            </label>-->
-<!--                            <label th:if="${#fields.hasErrors('agreeWithConditions')}" th:class="'error'" th:errors="*{agreeWithConditions}" class="col-lg-4 control-label" style="color:red;" ></label>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-                    <!-- Submit Button -->
+           <!-- Submit Button -->
                     <div class="form-group col-lg-12 mx-auto mb-0" >
                         <button class="btn btn-primary btn-block py-2" type="submit">
                             <span class="font-weight-bold">Înregistrare</span>

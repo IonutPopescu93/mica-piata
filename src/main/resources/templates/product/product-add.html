@@ -18,7 +18,7 @@
 
 <body>
 <div th:replace="fragments/header :: navbar"/>
-<form class="tm-edit-product-form"  method="post" th:action="@{/products/add}" th:object="${productDto}">
+<form class="tm-edit-product-form"  method="post" th:action="@{/admin/products/add}" th:object="${productDto}">
 <div class="container tm-mt-big tm-mb-big"  >
   <div class="row">
     <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
@@ -78,7 +78,7 @@
 
           <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block text-uppercase">Adaugă produs!</button>
-            <a th:href="@{/products}">
+            <a th:href="@{/admin/products}">
               <button type="button" class="btn btn-primary btn-block text-uppercase" >Cancel</button>
             </a>
           </div>
