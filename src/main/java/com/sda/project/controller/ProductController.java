@@ -52,16 +52,16 @@ public class ProductController {
         return "redirect:/admin/products";
     }
 
-    @GetMapping("/product/detail")
-    private String showProductDetail() {
-
-        return "product/product-view";
+    @GetMapping("/products")
+    private String showAllProducts(Model model) {
+        model.addAttribute("productsDto", productService.findAll());
+        return "product/products-list";
     }
 
-    @GetMapping("/products")
-    private String showAllProducts(Model model){
-        model.addAttribute("productDto", new ProductDto());
-        return "product/products-list";
+    @GetMapping("/product/{id}")
+    private String showProductDetail(Model model, @PathVariable Long id) {
+        model.addAttribute("productsDto", productService.findById(id));
+        return "product/product-view";
     }
 
 }
