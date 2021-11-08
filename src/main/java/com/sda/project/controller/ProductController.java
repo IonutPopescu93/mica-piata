@@ -20,37 +20,6 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/admin/products")
-    public String getProductListPage(Model model) {
-        model.addAttribute("productsDto", productService.findAll());
-        return "product/products";
-    }
-
-    @GetMapping("/admin/products/add")
-    public String showAddForm(Model model) {
-        model.addAttribute("productDto", new ProductDto());
-        return "product/product-add";
-    }
-
-    @PostMapping("/admin/products/add")
-    public String save(@ModelAttribute("productDto") ProductDto productDto) {
-        productService.save(productDto);
-        return "redirect:/admin/products";
-    }
-
-    @GetMapping("/admin/products/{id}")
-    public String showEditForm(Model model, @PathVariable Long id) {
-        ProductDto productToUpdate = productService.findById(id);
-        model.addAttribute("productDto", productToUpdate);
-        return "product/edit-product";
-    }
-
-    @PostMapping("/admin/products/{id}/edit")
-    public String update(@PathVariable Long id,
-                         @ModelAttribute ProductDto productDto) {
-        productService.update(productDto);
-        return "redirect:/admin/products";
-    }
 
     @GetMapping("/product/detail")
     private String showProductDetail() {
@@ -60,9 +29,15 @@ public class ProductController {
 
     @GetMapping("/products")
     private String showAllProducts(Model model){
-        model.addAttribute("productDto", new ProductDto());
+        model.addAttribute("productDto", productService.findAll());
         return "product/products-list";
     }
 
+    @GetMapping("/products/{id}")
+    public String showProduct(Model model, @PathVariable Long id) {
+        ProductDto product = productService.findById(id);
+        model.addAttribute("productDto", product);
+        return "product/product-view";
+    }
 }
 

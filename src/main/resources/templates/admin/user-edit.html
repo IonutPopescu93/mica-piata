@@ -64,8 +64,9 @@
 
                             <button class="btn btn-primary btn-block text-uppercase" type="submit">Update Profile</button>
 
-                            <button class="btn btn-primary btn-block text-uppercase" type="submit" th:href="@{/admin/users/{id}/delete(id = ${userDto.id})}">Delete Account</button>
-
+                            <a th:href="@{/admin/users/{id}/delete(id = ${userDto.id})}">
+                            <button class="btn btn-primary btn-block text-uppercase" type="button" >Delete Account</button>
+                            </a>
                             <a th:href="@{/admin/users}">
                                 <button class="btn btn-primary btn-block text-uppercase" type="button">Cancel</button>
                             </a>

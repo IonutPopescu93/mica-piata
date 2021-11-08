@@ -26,17 +26,17 @@
           <table class="table table-hover tm-table-small tm-product-table" method="get" th:action="@{/admin/products}" th:object="${productsDto}" >
             <thead>
             <tr>
-              <th scope="col"></th>
               <th scope="col">Denumire</th>
               <th scope="col">Preț</th>
               <th scope="col">Stoc</th>
               <th scope="col">Categoria</th>
               <th scope="col">Edit</th>
+              <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="productDto : ${productsDto}">
-              <th scope="row"><input type="checkbox" /></th>
+
               <td class="tm-product-name"><a th:text="${productDto.productName}"></a></td>
               <td><a th:text="${productDto.price}"></a></td>
               <td><a th:text="${productDto.unitsInStock}"></a></td>
@@ -48,13 +48,10 @@
                   <i class="fa fa-edit" style="font-size:20px;color:white"></i>
                 </a>
               </td>
-            </tr>
-                <a href="#" class="tm-product-delete-link">
-                  <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                </a>
-              </td>
-            </tr>
-            </tbody>
+              <th scope="row"><a th:href="@{/admin/products/{id}/delete (id= ${productDto.id})}">
+                <i class="far fa-trash-alt tm-product-delete-icon"></i>
+              </a></th>
+           </tbody>
           </table>
         </div>
         <!-- table container -->

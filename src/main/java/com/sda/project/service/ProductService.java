@@ -53,4 +53,10 @@ public class ProductService {
                     throw new ResourceNotFoundException("product not found");
                 });
     }
+
+    public void delete(Long id) {
+        productRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("product not found"));
+        productRepository.deleteById(id);
+    }
 }
