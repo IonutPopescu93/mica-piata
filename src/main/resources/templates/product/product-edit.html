@@ -78,6 +78,9 @@
 
               <div class="col-12">
                 <button type="submit" class="btn btn-primary btn-block text-uppercase">Update</button>
+                <a th:href="@{/admin/products/{id}/delete(id = ${productDto.id})}">
+                  <button class="btn btn-primary btn-block text-uppercase" type="button" >Ștergeți produsul</button>
+                </a>
                 <a th:href="@{/admin/products}">
                   <button type="button" class="btn btn-primary btn-block text-uppercase" >Cancel</button>
                 </a>

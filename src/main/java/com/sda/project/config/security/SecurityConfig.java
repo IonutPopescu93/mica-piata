@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/index", "/register/**", "/login").permitAll()
 
                 // no authorization needed
-                .antMatchers("/home", "/products/**", "/product/**").permitAll()
+                .antMatchers("/home", "/products/**").permitAll()
 
                 // temporary
                 // TODO: remove this in production and move

@@ -5,8 +5,6 @@ import com.sda.project.dto.ProductDto;
 import com.sda.project.mapper.ProductMapper;
 import com.sda.project.model.Product;
 import com.sda.project.repository.ProductRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,8 +14,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
-
-    private static final Logger log = LoggerFactory.getLogger(ProductService.class);
 
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;
@@ -50,9 +46,6 @@ public class ProductService {
     }
 
     public void update(ProductDto dto) {
-
-        log.info("updating product with id {} with data {}", dto.getId(), dto);
-
         productRepository.findById(dto.getId())
                 .map(product -> productMapper.update(product, dto))
                 .map(updatedProduct -> productRepository.save(updatedProduct))
@@ -61,7 +54,9 @@ public class ProductService {
                 });
     }
 
-    public void deleteById(Long id) {
+    public void delete(Long id) {
+        productRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("product not found"));
         productRepository.deleteById(id);
     }
 }

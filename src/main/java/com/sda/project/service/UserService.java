@@ -148,8 +148,6 @@ public class UserService implements UserDetailsService {
     }
 
     public void delete(Long id) {
-        log.info("delete project {}", id);
-
         userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("user not found"));
         userRepository.deleteById(id);
