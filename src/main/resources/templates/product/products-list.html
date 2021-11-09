@@ -26,11 +26,6 @@
                 <ul class="nav prod-cat">
                     <li>
                         <a class="active" href="#"><i class="fa fa-angle-right"></i>Fructe</a>
-                        <ul class="nav">
-                            <li class="active"><a href="#">-</a></li>
-                            <li><a href="#">-</a></li>
-                            <li><a href="#">-</a></li>
-                        </ul>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-angle-right"></i>Legume</a>
@@ -102,18 +97,7 @@
         </section>
     </div>
     <div class="col-md-9">
-        <section class="panel">
-            <div class="panel-body">
-                <div class="pull-right">
-                    <ul class="pagination pagination-sm pro-page-list">
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">»</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+
 
         <div class="row product-list" th:each="productDto : ${productsDto}">
             <div class="col-md-4">
@@ -136,6 +120,18 @@
             </div>
         </div>
     </div>
+    <section class="panel">
+        <div class="panel-body">
+            <div class="pull-right">
+                <ul class="pagination pagination-sm pro-page-list">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">»</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
 </div>
 </body>
 </html>

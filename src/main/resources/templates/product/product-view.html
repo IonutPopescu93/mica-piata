@@ -15,18 +15,20 @@
 </head>
 
 <body>
+
 <div th:replace="fragments/user-header :: bar"/>
 <br><br><br><br><br><br>
 
 <div class="tm-edit-product-form"  method="get" th:action="@{/products/{id} (id = ${productDto.id})}" th:object="${productDto}">
 <div class="container">
     <div class="container">
-        <div class="container-fliud">
+        <div class="container-fluid">
             <div class="wrapper row">
                 <div class="preview col-6">
 
                     <div class="preview-pic tab-content">
-                        <div class="tab-pane active"><img class="d-block w-100" th:src="@{/images/veget.jpg}" alt="ceva"/></div>
+                        <div class="tab-pane active"><img class="d-block w-100" th:src="@{/images/veget.jpg}"
+                                                          alt="ceva"/></div>
                     </div>
                 </div>
                 <div class="details col-md-6">
@@ -43,6 +45,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>

@@ -40,6 +40,9 @@
                         Produse</a></li>
                     <li><a th:href="@{/admin}"><span class="glyphicon glyphicon-wrench"></span>
                         Admin</a></li>
+                    <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}"><span
+                            class="glyphicon glyphicon-log-out"></span>
+                        Deconectare</a></li>
                 </ul>
             </div>
         </div>
