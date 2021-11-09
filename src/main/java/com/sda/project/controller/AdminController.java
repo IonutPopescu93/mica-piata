@@ -96,7 +96,7 @@ public class AdminController {
     public String showProductEditForm(Model model, @PathVariable Long id) {
         ProductDto productToUpdate = productService.findById(id);
         model.addAttribute("productDto", productToUpdate);
-        return "product/edit-product";
+        return "product/product-edit";
     }
 
     @PostMapping("/admin/products/{id}/edit")

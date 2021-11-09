@@ -11,7 +11,7 @@
 </head>
 <body>
 <header class="switcher-bar ssss clearfix" th:replace="fragments/user-header :: bar"></header>
-<div class="container bootdey" method="get" th:action="@{/product/products-list}">
+<div class="container bootdey" method="get" th:action="@{/product/products-list}" th:object="${productDto}">
     <div class="col-md-3">
         <section class="panel">
             <div class="panel-body">
@@ -79,7 +79,7 @@
         </section>
         <section class="panel">
             <header class="panel-heading">
-                Best Seller
+                Cel mai trăznet produs
             </header>
             <div class="panel-body">
                 <div class="best-seller">
@@ -89,36 +89,35 @@
                         </a>
                         <div class="media-body">
                             <a class="p-head" href="#"></a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <p>Cel mai cel dintre toate cele</p>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9" style="margin-top: 180px;">
+        <table class="table" method="get" th:action="@{/products/product-list}" th:object="${productDto}">
+            <!-- table header -->
+            <thead>
+            <tr>
+                <th scope="col">Nume</th>
+                <th scope="col">Categorie</th>
+                <th scope="col">Preț</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
 
-
-        <div class="row product-list" th:each="productDto : ${productsDto}">
-            <div class="col-md-4">
-                <section class="panel">
-                    <div class="pro-img-box">
-                        <img alt="" class="d-block w-100" th:src="@{images/cartof.jpg}"/>
-                        <a class="adtocart" href="#">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-                    <div class="panel-body text-center">
-                        <h4>
-                            <a class="pro-title" th:href="@{/products/{id} (id = ${productDto.id})}"
-                               th:text="${productDto.productName}">
-                            </a>
-                        </h4>
-                        <p class="price" th:text="${productDto.price}"></p>
-                    </div>
-                </section>
-            </div>
-        </div>
+            <!-- table body -->
+            <tbody>
+            <tr th:each="productDto : ${productDto}">
+                <td><a th:href="@{/products/{category}/{id} (id=${productDto.id}) (category=${productDto.category})}"
+                       th:text="${productDto.productName}"></a></td>
+                <td th:text="${productDto.category}"></td>
+                <td th:text="${productDto.price}"></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
     <section class="panel">
         <div class="panel-body">
