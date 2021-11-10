@@ -29,7 +29,7 @@ public class UserController {
     @PostMapping("/register/add")
     public String register(@ModelAttribute("userDto") UserDto userDto) {
         userService.save(userDto);
-        return "redirect:/home";
+        return "redirect:/login";
     }
 
     @GetMapping("/login")
@@ -45,6 +45,15 @@ public class UserController {
         return "redirect:/home";
     }
 
+    @GetMapping("/my-account")
+    public String getUserAccount(){
+        return "user/user-account";
+    }
+
+    @GetMapping("/my-account/products")
+    public String getUserProducts(){
+        return "user/user-products";
+    }
 }
 
 

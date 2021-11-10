@@ -78,12 +78,12 @@ public class AdminController {
     @GetMapping("/admin/products")
     public String getProductListPage(Model model) {
         model.addAttribute("productsDto", productService.findAll());
-        return "product/products";
+        return "admin/products";
     }
     @GetMapping("/admin/products/add")
     public String showAddForm(Model model) {
         model.addAttribute("productDto", new ProductDto());
-        return "product/product-add";
+        return "admin/product-add";
     }
 
     @PostMapping("/admin/products/add")
@@ -96,7 +96,7 @@ public class AdminController {
     public String showProductEditForm(Model model, @PathVariable Long id) {
         ProductDto productToUpdate = productService.findById(id);
         model.addAttribute("productDto", productToUpdate);
-        return "product/product-edit";
+        return "admin/product-edit";
     }
 
     @PostMapping("/admin/products/{id}/edit")

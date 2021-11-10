@@ -1,18 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Products</title>
-  <link th:rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Roboto:400,700}"/>
-
-  <link th:href="@{/css/fontawesome.min.css}" th:rel="stylesheet"/>
-
-  <link  th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}" th:rel="stylesheet"/>
-
-  <link th:href="@{/webjars/font-awesome/5.15.4/css/all.min.css}" th:rel="stylesheet"/>
-
-  <link th:rel="stylesheet" th:href="@{/css/templatemo-style.css}"/>
+  <div th:replace="fragments/head-css :: head-css"/>
 </head>
 
 <body>
