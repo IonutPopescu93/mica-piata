@@ -1,38 +1,68 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Mica|Piata: Acasa</title>
+    <div th:replace="fragments/head-css :: head-css"/>
 </head>
 <body>
 <div th:fragment="bar">
-<nav class="navbar navbar navbar-fixed-top" style="background:linear-gradient(to right,#ff1d25 5%,#a0328c 35%,#7040a4 45%,#4359c7 55%,#0082e6)">
-    <form action="/action_page.php" class="navbar-form">
-        <div class="topnav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background:linear-gradient(to right,#ff1d25 5%,#a0328c 35%,#7040a4 45%,#4359c7 55%,#0082e6)">
+        <div class="container-fluid">
             <a class="navbar-brand" th:href="@{/home}">
-                <img alt="logo" class="img-circle" th:href="@{/home}" style="height: 100px"
+                <img alt="logo" class="rounded-circle" th:href="@{/home}" style="height: 100px"
                      th:src="@{/images/logo.jpeg}"></a>
-
-            <div class="form-group" style="padding: 6px 100px 6px 100px;width: 1700px; vertical-align: bottom">
-                <input class="form-control" name="search" placeholder="Cauta" style="padding:6px 170px;" type="text">
-                <button class="btn btn-default" type="submit">
-                    <i class="glyphicon glyphicon-search"></i>
-                </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <form class="d-flex" style="padding: 6px 50px 6px 100px;width: 1000px;">
+                    <input  class="rounded-pill" name="search" placeholder="Cauta" style="padding:6px 200px;" type="text">
+                    <button class="btn btn-default" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
                 <ul class="nav navbar-nav navbar-right" style="background:white">
-                    <li><a th:href="@{/cart}"><span
-                            class="glyphicon glyphicon-shopping-cart" ></span> Cos</a></li>
-                    <li><a th:href="@{/register}" sec:authorize="isAnonymous()"><span class="glyphicon glyphicon-user"></span>
-                        Inregistrare</a></li>
-                    <li><a th:href="@{/login}" sec:authorize="isAnonymous()"><span class="glyphicon glyphicon-log-in"></span>
-                        Autentificare</a></li>
-                    <li><a th:href="@{/admin}">
-                        Admin</a></li>
-                    <li><a th:href="@{/my-account}">
-                        Contul meu</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/cart}">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/register}" sec:authorize="isAnonymous()">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Inregistrare</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/login}" sec:authorize="isAnonymous()">
+                            <i class="fas fa-sign-up-alt"></i>
+                        Autentificare</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/admin}">
+                            <i class="fas fa-user-shield"></i>
+                        Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/my-account}">
+                            <i class="far fa-user"></i>
+                            Contul meu</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" th:href="@{/my-account}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="far fa-user"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/login}" sec:authorize="isAnonymous()">
+                                    <i class="fas fa-sign-up-alt"></i>
+                                    Autentificare</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
-    </form>
-</nav>
+    </nav>
 </div>
 </body>
 </html>
+
