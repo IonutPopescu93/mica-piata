@@ -46,49 +46,49 @@ public class DbInit {
             createRoleIfNotFound(RoleType.ADMIN, Set.of(readPrivilege, writePrivilege));
             createRoleIfNotFound(RoleType.USER, Set.of(readPrivilege, writePrivilege));
 
-            // create main admin, admin, user
-            User mainAdmin = createMainAdmin();
-            userRepository.save(mainAdmin);
-
-            User admin = createAdmin();
-            User user = createUser();
+//            // create main admin, admin, user
+//            User mainAdmin = createMainAdmin();
+//            userRepository.save(mainAdmin);
+//
+//            User admin = createAdmin();
+//            User user = createUser();
         };
     }
-
-    private User createMainAdmin() {
-        User admin = new User(
-                "main@gmail.com",
-                "{bcrypt}$2y$12$92ZkDrGVS3W5ZJI.beRlEuyRCPrIRlkEHz6T.7MVmH38l4/VAHhyi",
-                "jon",
-                "snow");
-        Role adminRole = roleRepository.findByType(RoleType.ADMIN).orElseThrow();
-        admin.addRole(adminRole);
-        userRepository.save(admin);
-        return admin;
-    }
-
-    private User createAdmin() {
-        User admin = new User(
-                "admin@gmail.com",
-                "{bcrypt}$2y$12$92ZkDrGVS3W5ZJI.beRlEuyRCPrIRlkEHz6T.7MVmH38l4/VAHhyi",
-                "bill",
-                "clinton");
-        Role adminRole = roleRepository.findByType(RoleType.ADMIN).orElseThrow();
-        admin.addRole(adminRole);
-        userRepository.save(admin);
-        return admin;
-    }
-
-    private User createUser() {
-        User user = new User(
-                "user@gmail.com",
-                "{bcrypt}$2y$12$92ZkDrGVS3W5ZJI.beRlEuyRCPrIRlkEHz6T.7MVmH38l4/VAHhyi",
-                "alex",
-                "vasile");
-        Role userRole = roleRepository.findByType(RoleType.USER).orElseThrow();
-        user.addRole(userRole);
-        return userRepository.save(user);
-    }
+//
+//    private User createMainAdmin() {
+//        User admin = new User(
+//                "main@gmail.com",
+//                "{bcrypt}$2a$10$y1pZ1OwJgUJGeWcdwp/.SO4w3Ko4dCTky8RHDmSGZWLOhZnlsQkiS",
+//                "jon",
+//                "snow");
+//        Role adminRole = roleRepository.findByType(RoleType.ADMIN).orElseThrow();
+//        admin.addRole(adminRole);
+//        userRepository.save(admin);
+//        return admin;
+//    }
+//
+//    private User createAdmin() {
+//        User admin = new User(
+//                "admin@gmail.com",
+//                "{bcrypt}$2a$10$LgHyJkru37DAwmG7vdOMHeTuAHUl68474oeGdSgzOpQp41HxFTeTW",
+//                "bill",
+//                "clinton");
+//        Role adminRole = roleRepository.findByType(RoleType.ADMIN).orElseThrow();
+//        admin.addRole(adminRole);
+//        userRepository.save(admin);
+//        return admin;
+//    }
+//
+//    private User createUser() {
+//        User user = new User(
+//                "user@gmail.com",
+//                "{{bcrypt}$2a$10$LgHyJkru37DAwmG7vdOMHeTuAHUl68474oeGdSgzOpQp41HxFTeTW",
+//                "alex",
+//                "vasile");
+//        Role userRole = roleRepository.findByType(RoleType.USER).orElseThrow();
+//        user.addRole(userRole);
+//        return userRepository.save(user);
+//    }
 
     @Transactional
     Role createRoleIfNotFound(RoleType type, Set<Privilege> privileges) {

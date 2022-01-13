@@ -1,68 +1,104 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <div th:replace="fragments/head-css :: head-css"/>
+<<head>
+    <title>Mica Piata</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css}" th:rel="stylesheet">
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js}"></script>
+    <link th:rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css}">
+
 </head>
 <body>
 <div th:fragment="bar">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background:linear-gradient(to right,#ff1d25 5%,#a0328c 35%,#7040a4 45%,#4359c7 55%,#0082e6)">
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top" style="background:linear-gradient(to right,#ff1d25 5%,#a0328c 35%,#7040a4 45%,#4359c7 55%,#0082e6); padding-left:50px;">
         <div class="container-fluid">
             <a class="navbar-brand" th:href="@{/home}">
-                <img alt="logo" class="rounded-circle" th:href="@{/home}" style="height: 100px"
-                     th:src="@{/images/logo.jpeg}"></a>
-            <div class="collapse navbar-collapse" id="navbarScroll">
-                <form class="d-flex" style="padding: 6px 50px 6px 100px;width: 1000px;">
-                    <input  class="rounded-pill" name="search" placeholder="Cauta" style="padding:6px 200px;" type="text">
-                    <button class="btn btn-default" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
+                <img th:src="@{/images/logo.jpeg}" alt="Avatar Logo" style="width:60px;" class="rounded-pill">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse">
+                <form class="d-flex" style="padding-left:40px;" th:action="@{/search}"  th:method="get">
+                    <input class="form-control me-2" name="value" type="search" placeholder="Search" style="width:800px" >
+                    <button class="btn btn-primary" type="submit">Search</button>
                 </form>
-                <ul class="nav navbar-nav navbar-right" style="background:white">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/cart}">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/register}" sec:authorize="isAnonymous()">
-                            <i class="fas fa-sign-in-alt"></i>
-                            Inregistrare</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/login}" sec:authorize="isAnonymous()">
-                            <i class="fas fa-sign-up-alt"></i>
-                        Autentificare</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/admin}">
-                            <i class="fas fa-user-shield"></i>
-                        Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/my-account}">
-                            <i class="far fa-user"></i>
-                            Contul meu</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" th:href="@{/my-account}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="far fa-user"></i>
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/login}" sec:authorize="isAnonymous()">
-                                    <i class="fas fa-sign-up-alt"></i>
-                                    Autentificare</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <div class="btn-group" style="padding-left:300px;">
+
+                    <div style="padding-left:5px;"> <a class="btn btn-light" th:href="@{/shoppingCart}" > <i class="bi bi-cart"></i></a> </div>
+
+                    <div style="padding-left:5px;"><a class="btn btn-light" th:href="@{/admin}" sec:authorize="hasAnyRole('ROLE_ADMIN')"></i>
+                        Admin</a></div>
+                    <div class="dropdown" style="padding-left:5px;">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person"></i>
+                            Cont
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="btn btn-light" th:href="@{/register}" sec:authorize="isAnonymous()" ><i class="bi bi-person-plus"></i>
+                                Inregistrare</a></li>
+                            <li><a class="btn btn-light" th:href="@{/login}" sec:authorize="isAnonymous()"><i class="bi bi-box-arrow-in-right"></i>
+                                Autentificare</a></li>
+                            <li><a class="btn btn-light" th:href="@{/logout}" sec:authorize="isAuthenticated()"><i class="bi bi-box-arrow-right"></i>
+                                Logout</a></li>
                         </ul>
-                    </li>
-                </ul>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </nav>
+    <nav class="navbar navbar-expand-lg navbar-light shadow" style="padding-top: 100px;">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/about}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/products}">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/contact}">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </nav>
 </div>
+function dropDown(event){
+var val = $("#search").val();
+if(val.length > 1){
+$.ajax({
+type: "GET",
+url: "/search?value="+val,
+processData: false,// prevent jQuery from automatically
+// transforming the data into a query string
+contentType: false,
+cache: false,
+timeout: 6000,
+success: function (data) {
+$('.dropdown-toggle').dropdown();
+$("#dropdown-container").empty();
+$("#dropdown-container").append(data);
+
+},
+error: function (e) {
+
+console.log("ERROR : ", e);
+
+}
+});
+
+}
+
+}
 </body>
 </html>
-

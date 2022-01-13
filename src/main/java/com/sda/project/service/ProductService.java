@@ -18,15 +18,20 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;
 
+
     @Autowired
     public ProductService(ProductRepository productRepository, ProductMapper productMapper) {
         this.productRepository = productRepository;
         this.productMapper = productMapper;
+
     }
 
-    public void save(@ModelAttribute ProductDto productDto) {
+    public ProductDto save(ProductDto productDto) {
+        productDto.setAvailable(true);
         Product product = productMapper.map(productDto);
-        productRepository.save(product);
+        Product savedProduct = productRepository.save(product);
+        ProductDto savedDto = productMapper.map(savedProduct);
+        return savedDto;
     }
 
     public List<ProductDto> findAll() {
@@ -58,5 +63,15 @@ public class ProductService {
         productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("product not found"));
         productRepository.deleteById(id);
+    }
+
+    public Product getProductById(Long id) {
+        return productRepository.getById(id);
+    }
+
+    public List<ProductDto> searchProductByNameLike(String value) {
+        List<Product> products = productRepository.search(value);
+        List <ProductDto> result = productMapper.map(products);
+        return result;
     }
 }

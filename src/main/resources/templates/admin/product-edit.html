@@ -67,8 +67,31 @@
 
               <div class="col-12">
                 <button type="submit" class="btn btn-primary btn-block text-uppercase">Update</button>
-                <a th:href="@{/admin/products/{id}/delete(id = ${productDto.id})}">
-                  <button class="btn btn-primary btn-block text-uppercase" type="button" >Ștergeți produsul</button>
+                <a >
+                  <button class="btn btn-primary btn-block text-uppercase" type="button" data-bs-toggle="modal" data-bs-target="#myModal">Ștergeți produsul</button>
+                  <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <h4 class="modal-title">Atenție!</h4>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                          Selectând ”șterge produsul”, produsul tău va fi definitiv șters din lista de produse!
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer" >
+                          <a th:href="@{/admin/products/{id}/delete(id = ${productDto.id})}" style="padding-left:0px;">
+                            <button class="btn btn-primary btn-block text-uppercase" type="button" >Ștergeți produsul</button></a>
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
                 </a>
                 <a th:href="@{/admin/products}">
                   <button type="button" class="btn btn-primary btn-block text-uppercase" >Cancel</button>

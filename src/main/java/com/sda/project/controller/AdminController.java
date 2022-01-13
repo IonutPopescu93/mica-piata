@@ -1,5 +1,6 @@
 package com.sda.project.controller;
 
+import com.sda.project.config.FileUploadUtil;
 import com.sda.project.dto.ProductDto;
 import com.sda.project.dto.UserDto;
 import com.sda.project.service.ProductService;
@@ -7,10 +8,12 @@ import com.sda.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.io.IOException;
 
 @Controller
 public class AdminController {
@@ -87,8 +90,17 @@ public class AdminController {
     }
 
     @PostMapping("/admin/products/add")
-    public String save(@ModelAttribute("productDto") ProductDto productDto) {
-        productService.save(productDto);
+    public String addPetForm(ProductDto productDto,
+                             @RequestParam("image") MultipartFile multipartFile) throws IOException {
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        productDto.setPhoto(fileName);
+        ProductDto savedProductDto = productService.save(productDto);
+
+
+        String uploadDir = "product-photos/" + savedProductDto.getId();
+
+        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+
         return "redirect:/admin/products";
     }
 
@@ -114,7 +126,7 @@ public class AdminController {
         } catch (RuntimeException e) {
             String errorMessage = e.getMessage();
             model.addAttribute("errorMessage", errorMessage);
-            return "admin/products";
+            return "redirect:/admin/products";
         }
     }
 }

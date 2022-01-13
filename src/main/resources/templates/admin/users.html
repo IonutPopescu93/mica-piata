@@ -28,6 +28,7 @@
               <th scope="col">Prenume</th>
               <th scope="col">Email</th>
               <th scope="col">Telefon</th>
+              <th scope="col">Rol</th>
               <th scope="col">Edit</th>
             </tr>
             </thead>
@@ -37,6 +38,7 @@
               <td><a th:text="${userDto.lastName}"></a></td>
               <td><a th:text="${userDto.email}"></a></td>
               <td><a th:text="${userDto.phoneNumber}"></a></td>
+              <td><a th:text="${userDto.role}"></a></td>
               <td><a th:href="@{/admin/users/{id} (id= ${userDto.id})}"><i class="fa fa-edit" style="font-size:20px;color:white"></i></a></td>
 
             </td>

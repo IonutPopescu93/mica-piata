@@ -16,12 +16,16 @@ public class Product {
     private Long id;
 
     private String productName;
-    private String description;
+    private String shortDescription;
 
+    private String fullDescription;
     @Enumerated(EnumType.STRING)
     private Category category;
 
     private Double price;
     private Double unitsInStock;
+
+    private String photo;
+    private boolean isAvailable;
 
 }
