@@ -1,6 +1,7 @@
 package com.sda.project.controller;
 
 import com.sda.project.dto.ProductDto;
+import com.sda.project.model.Category;
 import com.sda.project.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -70,11 +70,13 @@
 <!--                            </form>-->
 <!--                        </div>-->
 <!--                    </div>-->
-                    <div class="shopping-cart-footer">
-                        <div class="column cart-button">
+                    <div  class="container d-flex justify-content-between align-items-center">
+
                             <a class="btn btn-outline-secondary back" th:href="@{/products}">Înapoi la cumpărături</a>
-                            <a class="btn checkout btn-success" th:href="@{/checkout}" >Checkout</a>
-                        </div>
+
+                            <form  class="btn" th:action="@{/checkout}"  th:method="get" >
+                                    <button type="submit" class="btn checkout btn-success" >Checkout</button>
+                            </form>
                     </div>
                 </div>
             </div>

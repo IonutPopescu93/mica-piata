@@ -38,7 +38,7 @@ public class DbInit {
         return args -> {
             log.info("setup initial data");
 
-            // create privileges
+//             create privileges
             Privilege readPrivilege = createPrivilegeIfNotFound(PrivilegeType.READ_PRIVILEGE);
             Privilege writePrivilege = createPrivilegeIfNotFound(PrivilegeType.WRITE_PRIVILEGE);
 

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org"
-      xmlns:href="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 <head>
         <title>Mica Piata</title>
         <meta charset="utf-8">
@@ -28,8 +27,8 @@
                                         <h2>Popescu Ionuț</h2>
                                         <p class="title">CEO & Founder</p>
                                         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                                        <p>popescu@example.com</p>
-                                        <p href="/contact"><button class="button" >Contact</button></p>
+                                        <p>ionut@micapiata.com</p>
+                                        <a th:href="@{/contact}" class="btn btn-dark"> Contact</a>
                                 </div>
                         </div>
                 </div>
@@ -40,8 +39,8 @@
                                         <h2>Budacu Vlad</h2>
                                         <p class="title">Art Director</p>
                                         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                                        <p>budacu@example.com</p>
-                                        <p href="/contact"><button class="button" >Contact</button></p>
+                                        <p>vlad@micapiata.com</p>
+                                        <a th:href="@{/contact}" class="btn btn-dark"> Contact</a>
                                 </div>
                         </div>
                 </div>

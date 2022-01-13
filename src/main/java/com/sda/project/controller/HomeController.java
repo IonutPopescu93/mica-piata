@@ -56,4 +56,9 @@ public class HomeController {
         return "user/contact";
     }
 
+    @GetMapping("/termenisiconditii")
+    public String getTermeniPage(){
+        return "user/termenisiconditii";
+    }
+
 }

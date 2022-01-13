@@ -6,7 +6,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/mica-piata?serverTimezone=UTC
     username: root
-    password: root
+    password: corect@21
   jpa:
     hibernate:
       ddl-auto: create

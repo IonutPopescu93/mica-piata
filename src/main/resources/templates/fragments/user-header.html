@@ -13,7 +13,7 @@
 <div th:fragment="bar">
 
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top" style="background:linear-gradient(to right,#ff1d25 5%,#a0328c 35%,#7040a4 45%,#4359c7 55%,#0082e6); padding-left:50px;">
-        <div class="container-fluid">
+        <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand" th:href="@{/home}">
                 <img th:src="@{/images/logo.jpeg}" alt="Avatar Logo" style="width:60px;" class="rounded-pill">
             </a>
@@ -22,10 +22,10 @@
             </button>
             <div class="collapse navbar-collapse">
                 <form class="d-flex" style="padding-left:40px;" th:action="@{/search}"  th:method="get">
-                    <input class="form-control me-2" name="value" type="search" placeholder="Search" style="width:800px" >
+                    <input class="form-control me-2" name="value" type="search" placeholder="Search" style="width:600px" >
                     <button class="btn btn-primary" type="submit">Search</button>
                 </form>
-                <div class="btn-group" style="padding-left:300px;">
+                <div class="btn-group" style="padding-left:220px;">
 
                     <div style="padding-left:5px;"> <a class="btn btn-light" th:href="@{/shoppingCart}" > <i class="bi bi-cart"></i></a> </div>
 

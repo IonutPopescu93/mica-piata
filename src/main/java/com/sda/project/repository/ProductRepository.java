@@ -1,5 +1,6 @@
 package com.sda.project.repository;
 
+import com.sda.project.model.Category;
 import com.sda.project.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
