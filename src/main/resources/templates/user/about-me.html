@@ -12,7 +12,7 @@
 <body>
 <div th:replace="fragments/user-header :: bar"/>
 <form>
-        <div class="about-section">
+        <div class="about-section" style="background:linear-gradient(to right,#ff1d25 5%,#a0328c 35%,#7040a4 45%,#4359c7 55%,#0082e6);">
                 <h1>About Us Page</h1>
                 <p>Some text about who we are and what we do.</p>
                 <p>Resize the browser window to see that this page is responsive by the way.</p>
@@ -22,9 +22,9 @@
         <div class="row">
                 <div class="column">
                         <div class="card">
-                                <img src="/w3images/team1.jpg" alt="Ionuț" style="width:100%">
-                                <div class="container">
-                                        <h2>Popescu Ionuț</h2>
+<!--                                <img src="/w3images/team1.jpg" alt="Ionuț" style="width:100%">-->
+                                <div class="container-fluid">
+                                        <h3>Popescu Ionuț</h3>
                                         <p class="title">CEO & Founder</p>
                                         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                                         <p>ionut@micapiata.com</p>
@@ -34,9 +34,9 @@
                 </div>
                 <div class="column">
                         <div class="card">
-                                <img th:src="@{/images/vlad.jpeg}" alt="Vlad" style="width:100%">
-                                <div class="container">
-                                        <h2>Budacu Vlad</h2>
+                                <div class="container-fluid">
+                                        <img th:src="@{/images/vlad.jpg}" alt="Vlad" style="width:15%">
+                                        <h3>Budacu Vlad</h3>
                                         <p class="title">Art Director</p>
                                         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                                         <p>vlad@micapiata.com</p>
