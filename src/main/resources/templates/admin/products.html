@@ -26,7 +26,7 @@
             <tbody>
             <tr th:each="productDto : ${productsDto}">
 
-              <td class="tm-product-name"><a th:text="${productDto.productName}" th:href="@{/products/{id} (id= ${productDto.id})}"></a></td>
+              <td class="tm-product-name"><a th:text="${productDto.productName}" th:href="@{/products/detail/{id} (id= ${productDto.id})}" style="color:white;" ></a></td>
               <td><a th:text="${productDto.price}"></a></td>
               <td><a th:text="${productDto.unitsInStock}"></a></td>
               <td><a th:text="${productDto.category}" text-lowercase></a></td>

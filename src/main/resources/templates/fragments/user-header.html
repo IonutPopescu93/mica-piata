@@ -27,7 +27,12 @@
                 </form>
                 <div class="btn-group" style="padding-left:220px;">
 
-                    <div style="padding-left:5px;"> <a class="btn btn-light" th:href="@{/shoppingCart}" > <i class="bi bi-cart"></i></a> </div>
+                    <div style="padding-left:5px;">
+                        <a type="button" class="btn btn-light position-relative" th:href="@{/shoppingCart}">
+                            <i class="bi bi-cart"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">[[${shoppingCart.itemsNumber}]]<span class="visually-hidden">unread messages</span></span>
+                        </a>
+                    </div>
 
                     <div style="padding-left:5px;"><a class="btn btn-light" th:href="@{/admin}" sec:authorize="hasAnyRole('ROLE_ADMIN')"></i>
                         Admin</a></div>
@@ -57,13 +62,27 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/about}">About</a>
+                            <div class="btn-group" style="width:200px">
+                                <button id="btnGroupDrop1" type="button" class="btn btn-light" data-bs-toggle="dropdown" aria-expanded="true" >
+                                    <i class="bi bi-list"></i>Shop
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" th:href="@{/products}" style="width:200px">Fructe</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/products}" style="width:200px;">Legume</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/products}" style="width:200px;">Cofetărie</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/products}" style="width:200px;">Cereale</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/products}" style="width:200px;">Panificație</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/products}" sstyle="width:200px;">Carne</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/products}" sstyle="width:200px;">Pește</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/products}" sstyle="width:200px;">Ouă</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/products}" sstyle="width:200px;">Condimente</a></li>
+
+                                </ul>
+                            </div>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/products}">Shop</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/contact}">Contact</a>
+                            <a class="nav-link" th:href="@{/contact}"> <i class="bi bi-headset"></i>Contact</a>
                         </li>
                     </ul>
                 </div>

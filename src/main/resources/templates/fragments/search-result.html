@@ -25,9 +25,8 @@
                         <img class="card-img rounded-0 img-fluid" th:src="@{${productDto.photoImagePath}}" style="height: 250px; width: 250px;">
                     </div>
                     <div class="card text-center">
-                        <a th:href="@{/products/{id}(id = ${productDto.id})}" class="h3 text-decoration-none">[[${productDto.productName}]]</a>
+                        <a th:href="@{/products/detail/{id}(id = ${productDto.id})}" class="h3 text-decoration-none">[[${productDto.productName}]]</a>
                         <p class="text-center mb-0">[[${productDto.price}]] lei</p>
-                        <a class="btn btn-primary mt-2"  th:href="@{products/{id}(id = ${productDto.id})}">Adaugă în coș</a>
                     </div>
                 </div>
             </div>

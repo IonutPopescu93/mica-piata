@@ -18,6 +18,7 @@ public class CartItem {
     @JoinColumn(name = "product_id",nullable=false, updatable=false)
     private Product product;
 
+
     public String getPhoto() {
         return photo;
     }
@@ -26,6 +27,7 @@ public class CartItem {
         this.photo = product.getPhoto();
         return this;
     }
+
 
     private String photo;
 
@@ -60,6 +62,7 @@ public class CartItem {
     public void setDate(Date date) {
         this.date = date;
     }
+
 
     @Override
     public int hashCode() {

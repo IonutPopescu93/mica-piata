@@ -9,8 +9,11 @@
 <body>
 <div th:replace="fragments/user-header :: bar"/>
 
-    <section class="bg-light"  method="get" th:action="@{/products/{id} (id = ${productDto.id})}" th:object="${productDto}">
-        <div class="container pb-5">
+<div class="container py-5">
+    <a>/[[${productDto.category}]]/[[${productDto.productName}]]</a>
+    <section class="light"  method="get" th:action="@{/products/detail/{id} (id = ${productDto.id})}" th:object="${productDto}">
+
+        <div class="bg-light">
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class="card mb-3">
@@ -72,10 +75,10 @@
     </section>
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title">[[${productDto.productName}]]</h5>
+        <h5 class="card-title">Descriere:</h5>
         <p class="card-text" >[[${productDto.fullDescription}]]</p>
     </div>
 </div>
-
+</div>
 </body>
 </html>

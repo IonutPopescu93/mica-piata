@@ -16,6 +16,18 @@
     <div class="row">
         <div class="col-lg-3">
             <h1 class="h2 pb-4">Categorii</h1>
+            <div class="d-grid gap-2">
+                <button type="button" class="btn btn-outline-dark">Fructe</button>
+                <button type="button" class="btn btn-outline-dark">Legume</button>
+                <button type="button" class="btn btn-outline-dark">Cofetărie</button>
+                <button type="button" class="btn btn-outline-dark">Cereale</button>
+                <button type="button" class="btn btn-outline-dark">Panificație</button>
+                <button type="button" class="btn btn-outline-dark">Carne</button>
+                <button type="button" class="btn btn-outline-dark">Pește</button>
+                <button type="button" class="btn btn-outline-dark">Ouă</button>
+                <button type="button" class="btn btn-outline-dark">Condimente</button>
+            </div>
+
         </div>
         <div class="col-lg-9">
             <div class="row">
@@ -33,11 +45,11 @@
                 <div class="row row-cols-1 row-cols-md-3 g-4" >
                     <div class="col-md-4"th:each="productDto : ${productDto}">
                         <div class="card rounded-0" style="padding-left:20px;">
-                            <a th:href="@{/products/{id}(id = ${productDto.id})}"><img class="card-img rounded-0 img-fluid" th:src="@{${productDto.photoImagePath}}"  style="height: 250px; width: 250px;"></a>
+                            <a th:href="@{/products/detail/{id}(id = ${productDto.id})}"><img class="card-img rounded-0 img-fluid" th:src="@{${productDto.photoImagePath}}"  style="height: 250px; width: 250px;"></a>
 
                         </div>
                         <div class="card text-center">
-                            <a th:href="@{/products/{id}(id = ${productDto.id})}" class="h3 text-decoration-none" th:text="${productDto.productName}">Oupidatat non</a>
+                            <a th:href="@{/products/detail/{id}(id = ${productDto.id})}" class="h3 text-decoration-none" th:text="${productDto.productName}">Oupidatat non</a>
                             <p class="text-center mb-0"  th:text="${productDto.price}"></p>
                         </div>
                     </div>

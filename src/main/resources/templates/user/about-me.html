@@ -11,6 +11,7 @@
 </head>
 <body>
 <div th:replace="fragments/user-header :: bar"/>
+<div class="container mt-3">
 <form>
         <div class="about-section" style="background:linear-gradient(to right,#ff1d25 5%,#a0328c 35%,#7040a4 45%,#4359c7 55%,#0082e6);">
                 <h1>About Us Page</h1>
@@ -26,7 +27,6 @@
                                 <div class="container-fluid">
                                         <h3>Popescu Ionuț</h3>
                                         <p class="title">CEO & Founder</p>
-                                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                                         <p>ionut@micapiata.com</p>
                                         <a th:href="@{/contact}" class="btn btn-dark"> Contact</a>
                                 </div>
@@ -46,15 +46,7 @@
                 </div>
         </div>
 </form>
-</footer>
-<!-- End Footer -->
+</div>
 
-<!-- Start Script -->
-<script src="assets/js/jquery-1.11.0.min.js"></script>
-<script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-<script src="assets/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/templatemo.js"></script>
-<script src="assets/js/custom.js"></script>
-<!-- End Script -->
 </body>
 </html>

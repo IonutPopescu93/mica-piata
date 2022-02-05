@@ -32,8 +32,10 @@
 <body class="bg-light">
 <div th:replace="fragments/user-header :: bar"/>
 <div class="container" style="padding-top: 20px;">
+
     <main>
         <div class="row g-5">
+            <form th:method="post" th:action="@{/checkout}" th:object="${orderDto}">
             <div class="col-md-5 col-lg-4 order-md-last">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-primary">Coșul tău</span>
@@ -49,7 +51,7 @@
                     </li>
 
                 </ul>
-                <span class="text-medium">Total: [[${shoppingCart.totalPrice}]] lei</span>
+                <span class="text-medium">Total: [[${shoppingCart.TotalPrice}]]  lei</span>
 <!--                <form class="card p-2">-->
 <!--                    <div class="input-group">-->
 <!--                        <input type="text" class="form-control" placeholder="Promo code">-->
@@ -59,11 +61,11 @@
             </div>
             <div class="col-md-7 col-lg-8">
                 <h4 class="mb-3">Adresa</h4>
-                <form class="needs-validation" novalidate>
+
                     <div class="row g-3">
                         <div class="col-sm-6">
                             <label for="firstName" class="form-label">Nume</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                            <input type="text" class="form-control" id="firstName" placeholder="" value=""  th:field="*{userFirstName}" >
                             <div class="invalid-feedback">
                                 Valid first name is required.
                             </div>
@@ -71,7 +73,7 @@
 
                         <div class="col-sm-6">
                             <label for="lastName" class="form-label">Prenume</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required th:field="*{userLastName}">
                             <div class="invalid-feedback">
                                 Valid last name is required.
                             </div>
@@ -79,26 +81,26 @@
 
                         <div class="col-12">
                             <label for="address" class="form-label">Adresa</label>
-                            <input type="text" class="form-control" id="address" placeholder="Oraș, stradă, nr., etc" required>
+                            <input type="text" class="form-control" id="address" placeholder="Oraș, stradă, nr., etc" required th:field="*{userAddressLocality}">
                             <div class="invalid-feedback">
                                 Please enter your shipping address.
                             </div>
                         </div>
 
-                        <div class="col-md-5">
-                            <label for="country" class="form-label">Țara</label>
-                            <select class="form-select" id="country" required>
-                                <option value="">Alege...</option>
-                                <option>România</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid country.
-                            </div>
-                        </div>
+<!--                        <div class="col-md-5">-->
+<!--                            <label for="country" class="form-label">Țara</label>-->
+<!--                            <select class="form-select" id="country" required th:field="*{userAddressCountry}">-->
+<!--                                <option value="">Alege...</option>-->
+<!--                                <option value="Romania">România</option>-->
+<!--                            </select>-->
+<!--                            <div class="invalid-feedback">-->
+<!--                                Please select a valid country.-->
+<!--                            </div>-->
+<!--                        </div>-->
 
                         <div class="col-md-4">
                             <label for="state" class="form-label">Județul</label>
-                            <select class="form-select" id="state" required>
+                            <select class="form-select" id="state" required th:field="*{userAddressCounty}">
                                 <<option value="">Alege...</option>
                                 <option value="alba">Alba</option>
                                 <option value="arad">Arad</option>
@@ -150,7 +152,7 @@
 
                         <div class="col-md-3">
                             <label for="zip" class="form-label">Cod poștal</label>
-                            <input type="text" class="form-control" id="zip" placeholder="" required>
+                            <input type="text" class="form-control" id="zip" placeholder="" required th:field="*{userAddressPostalCode}">
                             <div class="invalid-feedback">
                                 Zip code required.
                             </div>
@@ -164,10 +166,12 @@
                         <label class="form-check-label" for="same-address">Sunt de acord cu <a th:href="@{/termenisiconditii}">termenii și condițiile siteului web</a> </label>
                     </div>
                     <hr class="my-4">
-                    <a class="w-100 btn btn-primary btn-lg" type="submit" th:href="@{/payment}" >Continuă către plată</a>
 
-                </form>
+
+
             </div>
+                <button class="w-100 btn btn-primary btn-lg" type="submit" >Continuă către plată</button>
+            </form>
         </div>
     </main>
 

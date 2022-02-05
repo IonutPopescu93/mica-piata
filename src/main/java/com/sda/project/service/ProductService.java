@@ -75,4 +75,10 @@ public class ProductService {
         List <ProductDto> result = productMapper.map(products);
         return result;
     }
+
+    public List<ProductDto> findAllByCategory(String category) {
+        List<Product> products = productRepository.findByCategory(category);
+        List <ProductDto> result = productMapper.map(products);
+        return result;
+    }
 }

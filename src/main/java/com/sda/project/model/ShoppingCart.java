@@ -4,17 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "shoppingcart")
@@ -34,7 +24,11 @@ public class ShoppingCart {
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER )
     private Set<CartItem> items = new HashSet<CartItem>();
+
     private String sessionToken;
+
+    @OneToOne(mappedBy = "shoppingCart")
+    private Order order;
 
     public ShoppingCart() {
     }
@@ -81,6 +75,26 @@ public class ShoppingCart {
     public void setSessionToken(String sessionToken) {
         this.sessionToken = sessionToken;
     }
+
+    public ShoppingCart setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
+        return this;
+    }
+
+    public ShoppingCart setItemsNumber(int itemsNumber) {
+        this.itemsNumber = itemsNumber;
+        return this;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public ShoppingCart setOrder(Order order) {
+        this.order = order;
+        return this;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;

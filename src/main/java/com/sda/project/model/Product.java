@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -27,5 +29,10 @@ public class Product {
 
     private String photo;
     private boolean isAvailable;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER )
+    private Set<CartItem> items = new HashSet<CartItem>();
+
+
 
 }

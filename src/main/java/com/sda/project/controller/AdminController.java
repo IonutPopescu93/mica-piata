@@ -1,8 +1,10 @@
 package com.sda.project.controller;
 
 import com.sda.project.config.FileUploadUtil;
+import com.sda.project.dto.OrderDto;
 import com.sda.project.dto.ProductDto;
 import com.sda.project.dto.UserDto;
+import com.sda.project.service.OrderService;
 import com.sda.project.service.ProductService;
 import com.sda.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,14 +24,18 @@ public class AdminController {
 
     private final ProductService productService;
 
+    private final OrderService orderService;
+
     @Autowired
-    public AdminController(UserService userService, ProductService productService) {
+    public AdminController(UserService userService, ProductService productService, OrderService orderService) {
         this.userService = userService;
         this.productService = productService;
+        this.orderService = orderService;
     }
 
     @GetMapping("/admin")
-    public String getAdminPage(){
+    public String getAdminPage(Model model){
+        model.addAttribute("ordersDto", orderService.findAll());
         return "admin/dashboard";
     }
 
