@@ -20,13 +20,13 @@
               <th scope="col">Stoc</th>
               <th scope="col">Categoria</th>
               <th scope="col">Edit</th>
-              <th scope="col"></th>
+              <th scope="col">Șterge</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="productDto : ${productsDto}">
 
-              <td class="tm-product-name"><a th:text="${productDto.productName}"></a></td>
+              <td class="tm-product-name"><a th:text="${productDto.productName}" th:href="@{/products/detail/{id} (id= ${productDto.id})}" style="color:white;" ></a></td>
               <td><a th:text="${productDto.price}"></a></td>
               <td><a th:text="${productDto.unitsInStock}"></a></td>
               <td><a th:text="${productDto.category}" text-lowercase></a></td>
@@ -37,9 +37,31 @@
                   <i class="fa fa-edit" style="font-size:20px;color:white"></i>
                 </a>
               </td>
-              <th scope="row"><a th:href="@{/admin/products/{id}/delete (id= ${productDto.id})}">
-                <i class="far fa-trash-alt tm-product-delete-icon"></i>
-              </a></th>
+              <th scope="row">
+                <a>
+                <button class="far fa-trash-alt tm-product-delete-icon" data-bs-toggle="modal" data-bs-target="#myModal"></button>
+                <div class="modal" id="myModal">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <!-- Modal Header -->
+                      <div class="modal-header">
+                        <h4 class="modal-title">Atenție!</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                      </div>
+                      <!-- Modal body -->
+                      <div class="modal-body">
+                        Selectând ”șterge produsul”, produsul tău va fi definitiv șters din lista de produse!
+                      </div>
+                      <!-- Modal footer -->
+                      <div class="modal-footer" >
+                        <a th:href="@{/admin/products/{id}/delete(id = ${productDto.id})}" style="padding-left:0px;">
+                          <button class="btn btn-primary btn-block text-uppercase" type="button" >Ștergeți produsul</button></a>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
            </tbody>
           </table>
         </div>

@@ -35,6 +35,19 @@ public class User {
                     name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles = new HashSet<>();
 
+    @OneToMany(mappedBy = "user",
+            fetch = FetchType.LAZY)
+    private Set<Order> orders = new HashSet<>();
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public User setOrders(Set<Order> orders) {
+        this.orders = orders;
+        return this;
+    }
+
     public User() {
         this.enabled = true;
     }

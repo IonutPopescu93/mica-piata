@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Mica Piata</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css}" th:rel="stylesheet">
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js}"></script>
+    <link th:rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css}">
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div th:replace="fragments/user-header :: bar"/>
+<div class="container" style="padding-top: 20px;">
+
+    <main>
+        <div class="row g-5">
+            <form th:method="post" th:action="@{/checkout}" th:object="${orderDto}">
+            <div class="col-md-5 col-lg-4 order-md-last">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-primary">Coșul tău</span>
+                    <span class="badge bg-primary rounded-pill" th:href="@{shoppingCart.itemsNumber}"></span>
+                </h4>
+                <ul class="list-group mb-3" th:each="cartItem : ${shoppingCart.items}">
+                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                        <div>
+                            <h6 class="my-0">[[${cartItem.product.productName}]]</h6>
+                            <small class="text-muted">[[${cartItem.product.shortDescription}]]</small>
+                        </div>
+                        <span class="text-muted">[[${cartItem.product.price}]] lei</span>
+                    </li>
+
+                </ul>
+                <span class="text-medium">Total: [[${shoppingCart.TotalPrice}]]  lei</span>
+<!--                <form class="card p-2">-->
+<!--                    <div class="input-group">-->
+<!--                        <input type="text" class="form-control" placeholder="Promo code">-->
+<!--                        <button type="submit" class="btn btn-secondary">Redeem</button>-->
+<!--                    </div>-->
+<!--                </form>-->
+            </div>
+            <div class="col-md-7 col-lg-8">
+                <h4 class="mb-3">Adresa</h4>
+
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <label for="firstName" class="form-label">Nume</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="" value=""  th:field="*{userFirstName}" >
+                            <div class="invalid-feedback">
+                                Valid first name is required.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="lastName" class="form-label">Prenume</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required th:field="*{userLastName}">
+                            <div class="invalid-feedback">
+                                Valid last name is required.
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="address" class="form-label">Adresa</label>
+                            <input type="text" class="form-control" id="address" placeholder="Oraș, stradă, nr., etc" required th:field="*{userAddressLocality}">
+                            <div class="invalid-feedback">
+                                Please enter your shipping address.
+                            </div>
+                        </div>
+
+<!--                        <div class="col-md-5">-->
+<!--                            <label for="country" class="form-label">Țara</label>-->
+<!--                            <select class="form-select" id="country" required th:field="*{userAddressCountry}">-->
+<!--                                <option value="">Alege...</option>-->
+<!--                                <option value="Romania">România</option>-->
+<!--                            </select>-->
+<!--                            <div class="invalid-feedback">-->
+<!--                                Please select a valid country.-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+                        <div class="col-md-4">
+                            <label for="state" class="form-label">Județul</label>
+                            <select class="form-select" id="state" required th:field="*{userAddressCounty}">
+                                <<option value="">Alege...</option>
+                                <option value="alba">Alba</option>
+                                <option value="arad">Arad</option>
+                                <option value="arges">Arges</option>
+                                <option value="bacau">Bacau</option>
+                                <option value="bihor">Bihor</option>
+                                <option value="bistrita nasaud">Bistrita Nasaud</option>
+                                <option value="botosani">Botosani</option>
+                                <option value="brasov">Brasov</option>
+                                <option value="braila">Braila</option>
+                                <option value="bucuresti">Bucuresti</option>
+                                <option value="buzau">Buzau</option>
+                                <option value="caras severin">Caras Severin</option>
+                                <option value="calarasi">Calarasi</option>
+                                <option value="cluj">Cluj</option>
+                                <option value="constanta">Constanta</option>
+                                <option value="covasna">Covasna</option>
+                                <option value="dambovita">Dambovita</option>
+                                <option value="dolj">Dolj</option>
+                                <option value="galati">Galati</option>
+                                <option value="giurgiu">Giurgiu</option>
+                                <option value="gorj">Gorj</option>
+                                <option value="harghita">Harghita</option>
+                                <option value="hunedoara">Hunedoara</option>
+                                <option value="ialomita">Ialomita</option>
+                                <option value="iasi">Iasi</option>
+                                <option value="ilfov">Ilfov</option>
+                                <option value="maramures">Maramures</option>
+                                <option value="mehedinti">Mehedinti</option>
+                                <option value="mures">Mures</option>
+                                <option value="neamt">Neamt</option>
+                                <option value="olt">Olt</option>
+                                <option value="prahova">Prahova</option>
+                                <option value="satu Mare">Satu Mare</option>
+                                <option value="salaj">Salaj</option>
+                                <option value="sibiu">Sibiu</option>
+                                <option value="suceava">Suceava</option>
+                                <option value="teleorman">Teleorman</option>
+                                <option value="timis">Timis</option>
+                                <option value="tulcea">Tulcea</option>
+                                <option value="vaslui">Vaslui</option>
+                                <option value="valcea">Valcea</option>
+                                <option value="vrancea">Vrancea</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please provide a valid state.
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="zip" class="form-label">Cod poștal</label>
+                            <input type="text" class="form-control" id="zip" placeholder="" required th:field="*{userAddressPostalCode}">
+                            <div class="invalid-feedback">
+                                Zip code required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="same-address">
+                        <label class="form-check-label" for="same-address">Sunt de acord cu <a th:href="@{/termenisiconditii}">termenii și condițiile siteului web</a> </label>
+                    </div>
+                    <hr class="my-4">
+
+
+
+            </div>
+                <button class="w-100 btn btn-primary btn-lg" type="submit" >Continuă către plată</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2017–2022 Mica | Piata</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a th:href="@{/termenisiconditii}">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
+</div>
+
+
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="form-validation.js"></script>
+</body>
+</html>

@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -16,12 +18,21 @@ public class Product {
     private Long id;
 
     private String productName;
-    private String description;
+    private String shortDescription;
 
+    private String fullDescription;
     @Enumerated(EnumType.STRING)
     private Category category;
 
     private Double price;
     private Double unitsInStock;
+
+    private String photo;
+    private boolean isAvailable;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER )
+    private Set<CartItem> items = new HashSet<CartItem>();
+
+
 
 }

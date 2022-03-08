@@ -17,67 +17,57 @@
     <!-- row -->
     <div class="row tm-content-row">
         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-            <div class="tm-bg-primary-dark tm-block">
-                <h2 class="tm-block-title">Latest Hits</h2>
-                <canvas id="lineChart"></canvas>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-            <div class="tm-bg-primary-dark tm-block">
-                <h2 class="tm-block-title">Performance</h2>
-                <canvas id="barChart"></canvas>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
             <div class="tm-bg-primary-dark tm-block tm-block-taller">
                 <h2 class="tm-block-title">Storage Information</h2>
-                <div id="pieChartContainer">
-                    <canvas id="pieChart" class="chartjs-render-monitor" width="200" height="200"></canvas>
-                </div>
+                <table class="table table-hover tm-table-small tm-product-table" method="get" th:action="@{/admin}" th:object="${productDto}" >
+                    <thead>
+                    <tr>
+                        <th scope="col">Denumire</th>
+                        <th scope="col">Stoc</th>
+                        <th scope="col">Categoria</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="productDto : ${productsDto}">
+                        <td><a th:text="${productDto.productName}" style="color:white;" ></a></td>
+                        <td><a th:text="${productDto.unitsInStock}"></a></td>
+                        <td><a th:text="${productDto.category}"></a></td>
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
             <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow">
                 <h2 class="tm-block-title">Notification List</h2>
-                <div class="tm-notification-items">
-                    <div class="media tm-notification-item">
-                        <div class="tm-gray-circle"><img src="img/notification-01.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                        <div class="media-body">
-                            <p class="mb-2"><b>Jessica</b> and <b>6 others</b> sent you new <a href="#"
-                                                                                               class="tm-notification-link">product updates</a>. Check new orders.</p>
-                            <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
-        <div class="col-12 tm-block-col">
+        <div class="col-12 tm-block-col" method="get" th:action="@{/admin/dashboard}" th:object="${orderDto}">
             <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
                 <h2 class="tm-block-title">Orders List</h2>
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">ORDER NO.</th>
-                        <th scope="col">STATUS</th>
-                        <th scope="col">OPERATORS</th>
-                        <th scope="col">LOCATION</th>
-                        <th scope="col">DISTANCE</th>
-                        <th scope="col">START DATE</th>
-                        <th scope="col">EST DELIVERY DUE</th>
+                        <th scope="col">Număr comandă</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Preț</th>
+                        <th scope="col">Data comandă</th>
+                        <th scope="col">Nume </th>
+                        <th scope="col">Prenume</th>
+                        <th scope="col">Adresa</th>
+                        <th scope="col">Editeaza</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row"><b>#122349</b></th>
-                        <td>
-                            <div class="tm-status-circle moving">
-                            </div>Moving
-                        </td>
-                        <td><b>Oliver Trag</b></td>
-                        <td><b>London, UK</b></td>
-                        <td><b>485 km</b></td>
-                        <td>16:00, 12 NOV 2018</td>
-                        <td>08:00, 18 NOV 2018</td>
+                    <tr th:each="orderDto : ${ordersDto}">
+                        <td ><a th:text="${orderDto.id}"></a></td>
+                        <td ><a th:text="${orderDto.status}"></a></td>
+                        <td ><a th:text="${orderDto.total}"></a></td>
+                        <td><b th:text="${orderDto.orderDtodate}"><b/></td>
+                        <td ><a th:text="${orderDto.userFirstName}"></a></td>
+                        <td ><a th:text="${orderDto.userLastName}"></a></td>
+                        <td ><a> [[${orderDto.userAddressCounty}]] [[${orderDto.userAddressLocality}]]</a></td>
+                        <td ><a style="color:white;" th:href="@{/admin/order/{id} (id= ${orderDto.id})}"> Vizualizează comanda </a></td>
                     </tr>
                     </tbody>
                 </table>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Mica Piata</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css}" th:rel="stylesheet">
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js}"></script>
+    <link th:rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css}">
+</head>
+<body>
+<div th:replace="fragments/user-header :: bar"/>
+<div class="container mt-5" >
+    <div class="card-body">
+        <div id="cart" class="tabcontent">
+            <div class="col-12">
+                <div class="row">
+                    <div class=" table-responsive shopping-cart"
+                                             style="background-color: #fff">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Produs</th>
+                                <th class="text-center">Cantitate</th>
+                                <th class="text-center">Subtotal</th>
+                                <th class="text-center">Discount</th>
+                                <th class="text-center"><a class="btn btn-sm btn-outline-danger clear" th:href="@{/clearShoppingCart}">Sterge</a></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="cartItem : ${shoppingCart.items}">
+                                <td>
+                                    <div class="product-item">
+                                        <a class="product-thumb">[[${cartItem.product.productName}]]</a>
+                                        <img th:src="@{${cartItem.photoImagePath}}" class="card-img-top" style="width: 200px;">
+                                        <div class="product-info">
+                                            <h4 class="product-title">
+                                                <a href="#"></a>
+                                            </h4>
+                                            <span><em>Preț:</em> [[${cartItem.product.price}]] lei </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <form th:action="@{/updateShoppingCart}" th:method="post">
+                                        <input type="hidden" th:value="${cartItem.id}" name="item_id" />
+                                        <div class="input-group">
+                                            <input type="number" name="quantity" min="1"
+                                                   th:value="${cartItem.quantity}" class="form-control round-input form-control-sm" />
+                                            <button class="btn btn-success btn-sm btn-custom" type="submit">Update</i></button>
+                                        </div>
+                                    </form>
+                                </td>
+                                <td class="text-center text-lg text-medium">[[${cartItem.product.price * cartItem.quantity}]]</td>
+                                <td class="text-center text-lg text-medium"></td>
+                                <td class="text-center"><a class="remove-from-cart" th:href="@{/removeCartItem/{id}(id = ${cartItem.id})}">Sterge</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="column text-lg" style="padding-left:1100px;">
+                            <b>Total: <span class="text-medium">[[${shoppingCart.totalPrice}]] lei</span></b>
+                        </div>
+                    </div>
+<!--                    <div class="shopping-cart-footer">-->
+<!--                        <div class="column">-->
+<!--                            <form class="coupon-form" method="post">-->
+<!--                                <input class="form-control round-input form-control-sm" type="text" placeholder="Cupon de reducere!" required="">-->
+<!--                                <button class="btn btn-outline-primary btn-sm" type="submit">Adaugă Cupon</button>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <div  class="container d-flex justify-content-between align-items-center">
+
+                            <a class="btn btn-outline-secondary back" th:href="@{/products}">Înapoi la cumpărături</a>
+
+                            <form  class="btn" th:action="@{/checkout}"  th:method="get" >
+                                    <button type="submit" class="btn checkout btn-success" >Checkout</button>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

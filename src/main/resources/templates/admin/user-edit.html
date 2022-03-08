@@ -39,10 +39,6 @@
                             <label for="email" style="color:white">Email</label>
                             <input class="form-control validate" id="email" name="email" type="email" th:field="*{email}" required/>
                         </div>
-                        <div>
-                            <label for="password" style="color:white">Parolă</label>
-                            <input class="form-control validate" id="password" name="password" type="password" th:field="*{password}" required/>
-                        </div>
 
                         <div>
                             <label for="phone" style="color:white">Telefon</label>
@@ -53,9 +49,32 @@
 
                             <button class="btn btn-primary btn-block text-uppercase" type="submit">Update Profile</button>
 
-                            <a th:href="@{/admin/users/{id}/delete(id = ${userDto.id})}">
-                            <button class="btn btn-primary btn-block text-uppercase" type="button" >Delete Account</button>
+                            <a>
+                                <button class="btn btn-primary btn-block text-uppercase" type="button" data-bs-toggle="modal" data-bs-target="#myModal">Delete Account</button>
+                                <div class="modal" id="myModal">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Atenție!</h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                                Selectând ”delete account”, acest cont va fi șters definitiv!
+                                            </div>
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer" >
+                                                <a th:href="@{/admin/users/{id}/delete(id = ${userDto.id})}" style="padding-left:0px;">
+                                                    <button class="btn btn-primary btn-block text-uppercase" type="button" >Delete Account</button></a>
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </a>
+
                             <a th:href="@{/admin/users}">
                                 <button class="btn btn-primary btn-block text-uppercase" type="button">Cancel</button>
                             </a>

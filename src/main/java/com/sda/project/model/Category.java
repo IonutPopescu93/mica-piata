@@ -1,6 +1,14 @@
 package com.sda.project.model;
 
 public enum Category {
-    FRUITS,
-    VEGETABLES
+    FRUCTE,
+    LEGUME,
+    COFETARIE,
+    CEREALE,
+    PANIFICATIE,
+    CARNE,
+    PESTE,
+    OUA,
+    CONDIMENTE
+
 }
